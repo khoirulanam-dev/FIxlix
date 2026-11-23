@@ -108,7 +108,7 @@ export function CheckoutPaymentForm({
                 <QrCode className="w-5 h-5" />
               </div>
               <div>
-                <div className="font-bold text-sm text-slate-900">QRIS Instan (Simulasi)</div>
+                <div className="font-bold text-sm text-slate-900">QRIS Instan</div>
                 <div className="text-xs text-slate-500">Scan via BCA, Mandiri, GoPay, OVO, ShopeePay</div>
               </div>
             </div>
