@@ -104,15 +104,15 @@ export default async function ServiceDetailPage({
         <div className="lg:col-span-5 space-y-6">
           <Card className="rounded-3xl border-slate-200/90 shadow-md overflow-hidden">
             <div className="bg-emerald-600 p-6 text-white space-y-2">
-              <div className="text-xs uppercase tracking-wider font-semibold opacity-90">
+              <div className="text-xs uppercase tracking-wider font-bold text-emerald-100">
                 Biaya Jasa Dasar (Labor Fee)
               </div>
               <PriceDisplay
                 amount={service.laborBasePrice}
                 size="xl"
-                className="text-white"
+                valueClassName="text-white text-3xl font-extrabold"
               />
-              <p className="text-xs opacity-85">
+              <p className="text-xs text-emerald-100/90 font-medium">
                 Hanya jasa pengerjaan, tidak termasuk biaya sparepart.
               </p>
             </div>
