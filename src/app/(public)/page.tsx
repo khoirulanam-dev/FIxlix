@@ -155,7 +155,7 @@ export default async function HomePage() {
             <Link
               key={cat.id}
               href={`/kategori/${cat.slug}`}
-              className="group block rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-200"
+              className="group block rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm hover:border-emerald-300 hover-lift"
             >
               <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-100 mb-3">
                 {cat.imageKey && (
@@ -200,7 +200,7 @@ export default async function HomePage() {
           {services.map((service) => {
             const techProfile = service.technician.technicianProfile;
             return (
-              <Card key={service.id} className="overflow-hidden hover:shadow-md transition-all flex flex-col justify-between">
+              <Card key={service.id} className="overflow-hidden hover-lift flex flex-col justify-between">
                 <div>
                   <div className="relative aspect-video w-full bg-slate-100">
                     {service.imageKey && (

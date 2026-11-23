@@ -487,7 +487,7 @@ export function DashboardLayoutShell({
         </header>
 
         {/* 4. Page Content Canvas */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto animate-page-enter">
           {children}
         </main>
       </div>

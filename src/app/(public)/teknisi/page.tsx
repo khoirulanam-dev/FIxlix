@@ -75,7 +75,7 @@ export default async function TechniciansPage({
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredTechnicians.map((tech) => (
-              <Card key={tech.userId} className="overflow-hidden hover:shadow-md transition-all flex flex-col justify-between">
+              <Card key={tech.userId} className="overflow-hidden hover-lift flex flex-col justify-between">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-16 h-16 rounded-2xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200">
