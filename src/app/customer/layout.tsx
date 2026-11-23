@@ -1,7 +1,6 @@
 import React from "react";
 import { requireRole } from "@/lib/auth/session";
 import { DashboardLayoutShell, NavSection } from "@/components/shared/dashboard-layout-shell";
-import { LayoutDashboard, ShoppingBag, User } from "lucide-react";
 
 export default async function CustomerLayout({
   children,
@@ -17,12 +16,12 @@ export default async function CustomerLayout({
         {
           label: "Dashboard Ringkasan",
           href: "/customer",
-          icon: LayoutDashboard,
+          iconName: "LayoutDashboard",
         },
         {
           label: "Pesanan Servis Saya",
           href: "/customer/orders",
-          icon: ShoppingBag,
+          iconName: "ShoppingBag",
         },
       ],
     },

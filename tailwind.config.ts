@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: ["class"],
@@ -35,11 +36,11 @@ const config: Config = {
           foreground: "#64748b",
         },
         accent: {
-          DEFAULT: "#f59e0b",
-          foreground: "#ffffff",
+          DEFAULT: "#f1f5f9",
+          foreground: "#0f172a",
         },
         destructive: {
-          DEFAULT: "#dc2626",
+          DEFAULT: "#ef4444",
           foreground: "#ffffff",
         },
         success: {
@@ -57,8 +58,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;
-

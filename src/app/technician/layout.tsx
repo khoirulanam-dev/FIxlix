@@ -1,14 +1,6 @@
 import React from "react";
 import { requireRole } from "@/lib/auth/session";
 import { DashboardLayoutShell, NavSection } from "@/components/shared/dashboard-layout-shell";
-import {
-  LayoutDashboard,
-  ShoppingBag,
-  PlusCircle,
-  FolderKanban,
-  DollarSign,
-  Star,
-} from "lucide-react";
 
 export default async function TechnicianLayout({
   children,
@@ -24,22 +16,22 @@ export default async function TechnicianLayout({
         {
           label: "Dashboard Teknisi",
           href: "/technician",
-          icon: LayoutDashboard,
+          iconName: "LayoutDashboard",
         },
         {
           label: "Kelola Pesanan",
           href: "/technician/orders",
-          icon: ShoppingBag,
+          iconName: "ShoppingBag",
         },
         {
           label: "Buat Custom Order",
           href: "/technician/orders/baru",
-          icon: PlusCircle,
+          iconName: "PlusCircle",
         },
         {
           label: "Katalog Layanan",
           href: "/technician/layanan",
-          icon: FolderKanban,
+          iconName: "FolderKanban",
         },
       ],
     },
@@ -49,12 +41,12 @@ export default async function TechnicianLayout({
         {
           label: "Pendapatan & Komisi",
           href: "/technician/pendapatan",
-          icon: DollarSign,
+          iconName: "DollarSign",
         },
         {
           label: "Ulasan Pelanggan",
           href: "/technician/reviews",
-          icon: Star,
+          iconName: "Star",
         },
       ],
     },

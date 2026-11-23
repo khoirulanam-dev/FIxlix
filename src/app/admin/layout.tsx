@@ -1,14 +1,6 @@
 import React from "react";
 import { requireRole } from "@/lib/auth/session";
 import { DashboardLayoutShell, NavSection } from "@/components/shared/dashboard-layout-shell";
-import {
-  LayoutDashboard,
-  ShieldCheck,
-  ShoppingBag,
-  Percent,
-  CreditCard,
-  Users,
-} from "lucide-react";
 
 export default async function AdminLayout({
   children,
@@ -24,17 +16,17 @@ export default async function AdminLayout({
         {
           label: "Overview & Laporan",
           href: "/admin",
-          icon: LayoutDashboard,
+          iconName: "LayoutDashboard",
         },
         {
           label: "Kelola & Verifikasi Teknisi",
           href: "/admin/teknisi",
-          icon: ShieldCheck,
+          iconName: "ShieldCheck",
         },
         {
           label: "Semua Pesanan",
           href: "/admin/orders",
-          icon: ShoppingBag,
+          iconName: "ShoppingBag",
         },
       ],
     },
@@ -44,12 +36,12 @@ export default async function AdminLayout({
         {
           label: "Pengaturan Komisi Platform",
           href: "/admin/komisi",
-          icon: Percent,
+          iconName: "Percent",
         },
         {
           label: "Transaksi & Rekonsiliasi",
           href: "/admin/pembayaran",
-          icon: CreditCard,
+          iconName: "CreditCard",
         },
       ],
     },
