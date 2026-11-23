@@ -11,7 +11,7 @@ export default async function CustomerLayout({
 
   const navSections: NavSection[] = [
     {
-      title: "Menu Pelanggan",
+      title: "Menu Utama",
       items: [
         {
           label: "Dashboard Ringkasan",

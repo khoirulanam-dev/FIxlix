@@ -88,16 +88,19 @@ export function Navbar() {
             {user ? (
               <div className="flex items-center gap-2">
                 <Link href={getDashboardHref()}>
-                  <Button variant="outline" size="sm" className="gap-2 font-medium">
-                    <LayoutDashboard className="h-4 w-4 text-emerald-600" />
-                    <span>Dashboard ({userRole === "ADMIN" ? "Admin" : userRole === "TECHNICIAN" ? "Teknisi" : "Pelanggan"})</span>
-                  </Button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-semibold shadow-sm shadow-emerald-600/25 hover:shadow-md hover:shadow-emerald-600/35 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  >
+                    <LayoutDashboard className="h-4 w-4 text-white shrink-0" />
+                    <span>Dashboard</span>
+                  </button>
                 </Link>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={handleSignOut}
-                  className="text-slate-500 hover:text-red-600"
+                  className="text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-xl"
                   title="Keluar"
                 >
                   <LogOut className="h-4 w-4" />
@@ -172,8 +175,9 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="block w-full"
                 >
-                  <Button className="w-full bg-emerald-600 text-white justify-center">
-                    Buka Dashboard
+                  <Button className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-xl gap-2 shadow-sm justify-center">
+                    <LayoutDashboard className="h-4 w-4 text-white" />
+                    <span>Dashboard</span>
                   </Button>
                 </Link>
                 <Button
