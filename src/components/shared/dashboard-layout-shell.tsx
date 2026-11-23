@@ -134,14 +134,9 @@ export function DashboardLayoutShell({
               <Wrench className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-xl tracking-tight text-slate-900">
-                  Fixlix
-                </span>
-                <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-slate-900 text-white uppercase tracking-wider">
-                  Pro
-                </span>
-              </div>
+              <span className="font-extrabold text-xl tracking-tight text-slate-900 block">
+                Fixlix
+              </span>
               <span className="text-xs text-slate-400 font-medium tracking-tight block">
                 Electronic Repair Portal
               </span>
@@ -149,27 +144,8 @@ export function DashboardLayoutShell({
           </Link>
         </div>
 
-        {/* User Mini Profile Badge (CoolAdmin Sidebar Profile Capsule) */}
-        <div className="p-4 mx-4 my-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full bg-slate-200 border-2 border-white shadow-xs overflow-hidden shrink-0 flex items-center justify-center font-bold text-slate-600">
-            {user.image ? (
-              <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
-            ) : (
-              <span>{user.name.charAt(0).toUpperCase()}</span>
-            )}
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${roleBadgeColor}`}>
-                {roleLabel}
-              </span>
-            </div>
-          </div>
-        </div>
-
         {/* Navigation Sections */}
-        <div className="flex-1 overflow-y-auto px-4 py-1 space-y-5">
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
           {navSections.map((section, idx) => (
             <div key={idx} className="space-y-1">
               {section.title && (
@@ -256,22 +232,6 @@ export function DashboardLayoutShell({
               >
                 <X className="w-5 h-5" />
               </button>
-            </div>
-
-            <div className="p-4 border-b border-slate-100 bg-slate-50 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center font-bold text-slate-600 text-xs">
-                {user.image ? (
-                  <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
-                ) : (
-                  <span>{user.name.charAt(0).toUpperCase()}</span>
-                )}
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
-                <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full inline-block mt-0.5 ${roleBadgeColor}`}>
-                  {roleLabel}
-                </span>
-              </div>
             </div>
 
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
