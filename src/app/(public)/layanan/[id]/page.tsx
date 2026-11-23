@@ -133,20 +133,22 @@ export default async function ServiceDetailPage({
                     </div>
                   )}
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 space-y-1">
                   <div className="text-xs text-slate-500 font-medium">Disediakan oleh teknisi:</div>
                   <Link
                     href={`/teknisi/${techProfile?.slug || ""}`}
-                    className="font-bold text-sm text-slate-900 hover:text-emerald-600 transition-colors block truncate"
+                    className="font-bold text-sm text-slate-900 hover:text-emerald-600 transition-colors block line-clamp-2 leading-snug"
                   >
                     {techProfile?.displayName || service.technician.name}
                   </Link>
                   {techProfile && (
-                    <StarRating
-                      rating={Number(techProfile.averageRating)}
-                      totalReviews={techProfile.reviewCount}
-                      size="sm"
-                    />
+                    <div className="pt-0.5">
+                      <StarRating
+                        rating={Number(techProfile.averageRating)}
+                        totalReviews={techProfile.reviewCount}
+                        size="sm"
+                      />
+                    </div>
                   )}
                 </div>
               </div>

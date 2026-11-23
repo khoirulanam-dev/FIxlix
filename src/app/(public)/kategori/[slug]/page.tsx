@@ -206,13 +206,13 @@ export default async function CategoryDetailPage({
                       </div>
                     )}
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 space-y-1">
                     <Link href={`/teknisi/${tech.slug}`}>
-                      <h3 className="font-bold text-slate-900 text-sm hover:text-emerald-600 transition-colors truncate">
+                      <h3 className="font-bold text-slate-900 text-sm hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
                         {tech.displayName}
                       </h3>
                     </Link>
-                    <div className="mt-1">
+                    <div className="pt-0.5">
                       <StarRating
                         rating={Number(tech.averageRating)}
                         totalReviews={tech.reviewCount}

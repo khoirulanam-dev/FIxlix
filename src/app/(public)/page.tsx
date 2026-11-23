@@ -334,19 +334,19 @@ export default async function HomePage() {
                       </div>
                     )}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <Link href={`/teknisi/${tech.slug}`}>
-                        <h3 className="font-bold text-slate-900 text-sm hover:text-emerald-600 transition-colors truncate">
+                  <div className="flex-1 min-w-0 space-y-1">
+                    <div className="flex items-start justify-between gap-2">
+                      <Link href={`/teknisi/${tech.slug}`} className="flex-1 min-w-0">
+                        <h3 className="font-bold text-slate-900 text-sm hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
                           {tech.displayName}
                         </h3>
                       </Link>
-                      <Badge variant="verified" className="text-xs px-2 py-0.5">
+                      <Badge variant="verified" className="text-[10px] px-1.5 py-0.5 shrink-0">
                         Terverifikasi
                       </Badge>
                     </div>
 
-                    <div className="mt-1">
+                    <div className="pt-0.5">
                       <StarRating
                         rating={Number(tech.averageRating)}
                         totalReviews={tech.reviewCount}
@@ -355,7 +355,7 @@ export default async function HomePage() {
                     </div>
 
                     {tech.serviceAreaText && (
-                      <p className="text-xs text-slate-500 mt-1 truncate">
+                      <p className="text-xs text-slate-500 mt-1 line-clamp-1 leading-normal">
                         📍 {tech.serviceAreaText}
                       </p>
                     )}

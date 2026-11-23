@@ -95,16 +95,14 @@ export default async function TechniciansPage({
                         </div>
                       )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <Link href={`/teknisi/${tech.slug}`}>
-                          <h3 className="font-bold text-slate-900 text-base hover:text-emerald-600 transition-colors truncate">
-                            {tech.displayName}
-                          </h3>
-                        </Link>
-                      </div>
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <Link href={`/teknisi/${tech.slug}`}>
+                        <h3 className="font-bold text-slate-900 text-base hover:text-emerald-600 transition-colors line-clamp-2 leading-snug">
+                          {tech.displayName}
+                        </h3>
+                      </Link>
 
-                      <div className="mt-1">
+                      <div className="pt-0.5">
                         <StarRating
                           rating={Number(tech.averageRating)}
                           totalReviews={tech.reviewCount}
@@ -113,7 +111,7 @@ export default async function TechniciansPage({
                       </div>
 
                       {tech.serviceAreaText && (
-                        <div className="flex items-center gap-1 text-xs text-slate-500 mt-1.5 truncate">
+                        <div className="flex items-center gap-1 text-xs text-slate-500 mt-1 line-clamp-1">
                           <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                           <span>{tech.serviceAreaText}</span>
                         </div>
