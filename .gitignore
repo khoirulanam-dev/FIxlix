@@ -1,0 +1,47 @@
+# Abaikan seluruh file Markdown
+*.md
+
+# Izinkan README utama
+!/README.md
+
+# Izinkan folder design-reference
+!/design-reference/
+!/design-reference/**
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+.turbo/
+.vercel/
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
