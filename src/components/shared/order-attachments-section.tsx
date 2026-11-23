@@ -6,7 +6,8 @@ import { ImageUpload } from "@/components/ui/image-upload";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
-import { Camera, Plus, Loader2, Image as ImageIcon, ChevronDown } from "lucide-react";
+import { Camera, Plus, Loader2, Image as ImageIcon } from "lucide-react";
+import { CustomSelect } from "@/components/ui/custom-select";
 
 interface AttachmentItem {
   id: string;
@@ -113,24 +114,20 @@ export function OrderAttachmentsSection({
               Unggah Foto Lampiran Servis
             </h3>
 
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-700">
-                Kategori Dokumentasi Foto *
-              </label>
-              <div className="relative max-w-xs">
-                <select
-                  value={kind}
-                  onChange={(e) => setKind(e.target.value)}
-                  className="w-full h-10 pl-3 pr-8 rounded-xl border border-slate-300 text-xs bg-white text-slate-800 appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                >
-                  <option value="BEFORE">Kondisi Kerusakan Awal</option>
-                  <option value="PART">Foto Komponen / Sparepart</option>
-                  <option value="DURING">Proses Reparasi</option>
-                  <option value="AFTER">Bukti Servis Selesai</option>
-                  <option value="OTHER">Dokumentasi Lainnya</option>
-                </select>
-                <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
+            <div className="max-w-xs">
+              <CustomSelect
+                label="Kategori Dokumentasi Foto"
+                required
+                value={kind}
+                onChange={setKind}
+                options={[
+                  { value: "BEFORE", label: "Kondisi Kerusakan Awal" },
+                  { value: "PART", label: "Foto Komponen / Sparepart" },
+                  { value: "DURING", label: "Proses Reparasi" },
+                  { value: "AFTER", label: "Bukti Servis Selesai" },
+                  { value: "OTHER", label: "Dokumentasi Lainnya" },
+                ]}
+              />
             </div>
 
             <ImageUpload

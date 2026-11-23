@@ -70,14 +70,14 @@ export function ConfirmModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity animate-in fade-in duration-200"
         onClick={() => {
           if (!loading) onClose();
         }}
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-md rounded-3xl bg-white p-6 sm:p-7 shadow-2xl border border-slate-200/90 z-10 animate-in zoom-in-95 duration-200 space-y-5">
+      <div className="relative w-full max-w-md rounded-3xl bg-white/98 backdrop-blur-md p-6 sm:p-7 shadow-2xl border border-slate-200/90 z-10 animate-in zoom-in-95 duration-200 space-y-5">
         <div className="flex items-start gap-4">
           <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 ${current.bg}`}>
             <Icon className="w-6 h-6" />

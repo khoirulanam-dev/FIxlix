@@ -543,10 +543,10 @@ export const ordersRelations = relations(orders, ({ one, many }) => ({
     fields: [orders.categoryId],
     references: [categories.id],
   }),
-  spareparts: many(orderSpareparts),
-  additionalCharges: many(orderAdditionalCharges),
-  attachments: many(orderAttachments),
-  statusHistory: many(orderStatusHistory),
+  spareparts: many(orderSpareparts, { relationName: "orderSpareparts" }),
+  additionalCharges: many(orderAdditionalCharges, { relationName: "orderAdditionalCharges" }),
+  attachments: many(orderAttachments, { relationName: "orderAttachments" }),
+  statusHistory: many(orderStatusHistory, { relationName: "orderStatusHistory" }),
   payment: one(payments, {
     fields: [orders.id],
     references: [payments.orderId],
@@ -561,6 +561,7 @@ export const orderSparepartsRelations = relations(orderSpareparts, ({ one }) => 
   order: one(orders, {
     fields: [orderSpareparts.orderId],
     references: [orders.id],
+    relationName: "orderSpareparts",
   }),
 }));
 
@@ -568,6 +569,7 @@ export const orderAdditionalChargesRelations = relations(orderAdditionalCharges,
   order: one(orders, {
     fields: [orderAdditionalCharges.orderId],
     references: [orders.id],
+    relationName: "orderAdditionalCharges",
   }),
 }));
 
@@ -575,6 +577,7 @@ export const orderAttachmentsRelations = relations(orderAttachments, ({ one }) =
   order: one(orders, {
     fields: [orderAttachments.orderId],
     references: [orders.id],
+    relationName: "orderAttachments",
   }),
   uploadedByUser: one(users, {
     fields: [orderAttachments.uploadedBy],
@@ -586,6 +589,7 @@ export const orderStatusHistoryRelations = relations(orderStatusHistory, ({ one 
   order: one(orders, {
     fields: [orderStatusHistory.orderId],
     references: [orders.id],
+    relationName: "orderStatusHistory",
   }),
   actor: one(users, {
     fields: [orderStatusHistory.actorId],

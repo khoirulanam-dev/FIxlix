@@ -388,10 +388,10 @@ export function DashboardLayoutShell({
 
               {/* Floating Profile Dropdown Menu */}
               {userMenuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-64 rounded-2xl bg-white shadow-xl border border-slate-200/90 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute right-0 top-full mt-2 w-72 rounded-2xl bg-white/98 backdrop-blur-md shadow-2xl border border-slate-200/90 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                   {/* User details header */}
                   <div className="px-4 py-3 border-b border-slate-100 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-emerald-100 border border-emerald-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-emerald-800 text-sm">
+                    <div className="w-11 h-11 rounded-full bg-emerald-100 border border-emerald-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-emerald-800 text-sm shadow-2xs">
                       {user.image ? (
                         <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
                       ) : (
@@ -399,8 +399,8 @@ export function DashboardLayoutShell({
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
-                      <div className="text-xs text-slate-400 truncate">{user.email}</div>
+                      <div className="text-sm font-bold text-slate-900 truncate">{user.name}</div>
+                      <div className="text-xs text-slate-500 truncate">{user.email}</div>
                       <div className="mt-1">
                         <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full inline-block ${roleBadgeColor}`}>
                           {roleLabel}
@@ -410,14 +410,19 @@ export function DashboardLayoutShell({
                   </div>
 
                   {/* Menu Items */}
-                  <div className="p-1.5 space-y-0.5 text-xs font-medium text-slate-700">
+                  <div className="p-1.5 space-y-1 text-xs font-medium text-slate-700">
                     <Link
                       href="/"
                       onClick={() => setUserMenuOpen(false)}
-                      className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                      className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
                     >
-                      <Home className="w-4 h-4 text-slate-400" />
-                      <span>Halaman Publik Utama</span>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                          <Home className="w-4 h-4" />
+                        </div>
+                        <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Halaman Publik Utama</span>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                     </Link>
 
                     {user.role === "CUSTOMER" && (
@@ -425,18 +430,28 @@ export function DashboardLayoutShell({
                         <Link
                           href="/customer/profil"
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
                         >
-                          <UserIcon className="w-4 h-4 text-slate-400" />
-                          <span>Profil & Foto Saya</span>
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                              <UserIcon className="w-4 h-4" />
+                            </div>
+                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Profil & Foto Saya</span>
+                          </div>
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                         </Link>
                         <Link
                           href="/customer/orders"
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
                         >
-                          <ShoppingBag className="w-4 h-4 text-slate-400" />
-                          <span>Pesanan Servis Saya</span>
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                              <ShoppingBag className="w-4 h-4" />
+                            </div>
+                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Pesanan Servis Saya</span>
+                          </div>
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                         </Link>
                       </>
                     )}
@@ -446,18 +461,28 @@ export function DashboardLayoutShell({
                         <Link
                           href="/technician/profil"
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
                         >
-                          <UserIcon className="w-4 h-4 text-slate-400" />
-                          <span>Profil & Foto Saya</span>
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                              <UserIcon className="w-4 h-4" />
+                            </div>
+                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Profil & Foto Saya</span>
+                          </div>
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                         </Link>
                         <Link
                           href="/technician/orders"
                           onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
                         >
-                          <ShoppingBag className="w-4 h-4 text-slate-400" />
-                          <span>Kelola Pesanan</span>
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                              <ShoppingBag className="w-4 h-4" />
+                            </div>
+                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Kelola Pesanan</span>
+                          </div>
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                         </Link>
                       </>
                     )}
@@ -466,23 +491,33 @@ export function DashboardLayoutShell({
                       <Link
                         href="/admin/orders"
                         onClick={() => setUserMenuOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                        className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
                       >
-                        <ShoppingBag className="w-4 h-4 text-slate-400" />
-                        <span>Semua Pesanan</span>
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                            <ShoppingBag className="w-4 h-4" />
+                          </div>
+                          <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Semua Pesanan</span>
+                        </div>
+                        <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                       </Link>
                     )}
                   </div>
 
                   {/* Logout Action */}
-                  <div className="pt-1.5 mt-1 border-t border-slate-100 px-1.5">
+                  <div className="pt-2 mt-1 border-t border-slate-100 px-1.5">
                     <button
                       type="button"
                       onClick={handleSignOut}
-                      className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
+                      className="group w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
                     >
-                      <LogOut className="w-4 h-4" />
-                      <span>Keluar Akun (Sign Out)</span>
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-red-100/60 text-red-600 flex items-center justify-center group-hover:bg-red-100 transition-colors">
+                          <LogOut className="w-4 h-4" />
+                        </div>
+                        <span>Keluar Akun (Sign Out)</span>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 text-red-300 group-hover:text-red-500 transition-colors" />
                     </button>
                   </div>
                 </div>

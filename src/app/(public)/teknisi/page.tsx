@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Search, Filter, ShieldCheck, MapPin, ChevronDown } from "lucide-react";
+import { Search, Filter, ShieldCheck, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +8,7 @@ import { StarRating } from "@/components/shared/star-rating";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { getTechnicians } from "@/modules/technicians/service";
 import { getCategories } from "@/modules/catalog/service";
+import { TechnicianSearchFilter } from "./technician-search-filter";
 
 export const dynamic = "force-dynamic";
 
@@ -48,40 +49,11 @@ export default async function TechniciansPage({
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-        <form method="GET" action="/teknisi" className="flex flex-col md:flex-row gap-3">
-          <div className="relative flex-1">
-            <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              name="q"
-              defaultValue={q}
-              placeholder="Cari nama teknisi, keahlian, atau area..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-          </div>
-
-          <div className="w-full md:w-64 relative">
-            <select
-              name="category"
-              defaultValue={category || ""}
-              className="w-full py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-700 appearance-none shadow-xs transition-colors hover:border-slate-400"
-            >
-              <option value="">Semua Kategori</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.slug}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-          </div>
-
-          <Button type="submit" className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-6">
-            Terapkan Filter
-          </Button>
-        </form>
-      </div>
+      <TechnicianSearchFilter
+        initialQuery={q}
+        initialCategory={category}
+        categories={categories}
+      />
 
       {/* Technicians Grid */}
       <div className="space-y-4">

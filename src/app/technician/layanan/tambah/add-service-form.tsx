@@ -7,8 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { formatRupiah } from "@/lib/utils";
-import { Loader2, ChevronDown } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { ImageUpload } from "@/components/ui/image-upload";
+import { CustomSelect } from "@/components/ui/custom-select";
 
 interface CategoryOption {
   id: string;
@@ -76,27 +77,17 @@ export function AddServiceForm({ categories }: { categories: CategoryOption[] })
         </div>
       )}
 
-      <div className="space-y-1.5">
-        <Label htmlFor="category" className="text-xs font-semibold text-slate-700">
-          Kategori Peralatan *
-        </Label>
-        <div className="relative">
-          <select
-            id="category"
-            value={categoryId}
-            onChange={(e) => setCategoryId(e.target.value)}
-            className="w-full h-11 pl-3.5 pr-10 rounded-xl border border-slate-200/90 text-sm bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 appearance-none transition-all shadow-xs cursor-pointer hover:border-slate-300"
-            required
-          >
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-        </div>
-      </div>
+      <CustomSelect
+        id="category"
+        label="Kategori Peralatan"
+        required
+        value={categoryId}
+        onChange={setCategoryId}
+        options={categories.map((c) => ({
+          value: c.id,
+          label: c.name,
+        }))}
+      />
 
       <div className="space-y-1.5">
         <Label htmlFor="title">Judul Layanan *</Label>
