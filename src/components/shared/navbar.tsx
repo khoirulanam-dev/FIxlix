@@ -79,10 +79,13 @@ export function Navbar() {
           {/* Right Action buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Link href="/teknisi">
-              <Button variant="ghost" size="sm" className="gap-2 text-slate-700">
-                <Search className="h-4 w-4" />
+              <button
+                type="button"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2 rounded-xl border border-slate-200/90 bg-slate-50/80 hover:bg-slate-100/90 hover:border-slate-300 text-slate-700 text-xs sm:text-sm font-medium transition-all shadow-2xs hover:shadow-xs active:scale-[0.98]"
+              >
+                <Search className="h-4 w-4 text-slate-500" />
                 <span>Cari</span>
-              </Button>
+              </button>
             </Link>
 
             {user ? (
