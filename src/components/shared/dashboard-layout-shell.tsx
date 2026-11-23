@@ -102,7 +102,7 @@ export function DashboardLayoutShell({
     if (href === "/customer" || href === "/technician" || href === "/admin") {
       return pathname === href;
     }
-    return pathname.startsWith(href);
+    return pathname === href || pathname.startsWith(href + "/");
   };
 
   return (

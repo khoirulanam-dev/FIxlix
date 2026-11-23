@@ -24,11 +24,6 @@ export default async function TechnicianLayout({
           iconName: "ShoppingBag",
         },
         {
-          label: "Buat Custom Order",
-          href: "/technician/orders/baru",
-          iconName: "PlusCircle",
-        },
-        {
           label: "Katalog Layanan",
           href: "/technician/layanan",
           iconName: "FolderKanban",
