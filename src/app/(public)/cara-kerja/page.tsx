@@ -16,7 +16,7 @@ export default function CaraKerjaPage() {
       </div>
 
       {/* 4 Steps Detailed */}
-      <div className="space-y-8">
+      <div className="stagger-container space-y-8">
         <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 flex flex-col md:flex-row gap-6 items-start">
           <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 font-extrabold flex items-center justify-center shrink-0 text-xl">
             1

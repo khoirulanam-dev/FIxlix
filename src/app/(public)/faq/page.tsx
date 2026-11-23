@@ -36,7 +36,7 @@ export default function FAQPage() {
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="stagger-container space-y-4">
         {faqs.map((f, i) => (
           <div key={i} className="rounded-2xl border border-slate-200 bg-white p-6 space-y-2">
             <h3 className="font-bold text-base text-slate-900 flex items-start gap-2.5">

@@ -83,7 +83,7 @@ export default async function CategoryDetailPage({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => {
               const techProfile = service.technician.technicianProfile;
               return (
@@ -188,7 +188,7 @@ export default async function CategoryDetailPage({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
           {technicians.map((tech) => (
             <Card key={tech.userId} className="overflow-hidden hover:shadow-md transition-all flex flex-col justify-between">
               <CardContent className="p-6 space-y-4">

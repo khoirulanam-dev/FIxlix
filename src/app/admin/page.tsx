@@ -54,7 +54,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* CoolAdmin 4-Card Accounting Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="stagger-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <StatCard
           title="Gross Merchandise Value"
           value={formatRupiah(metrics.totalGrossRevenue)}

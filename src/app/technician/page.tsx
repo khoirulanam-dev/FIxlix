@@ -68,7 +68,7 @@ export default async function TechnicianDashboardPage() {
       </div>
 
       {/* CoolAdmin 4-Stat Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="stagger-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <StatCard
           title="Pendapatan Bersih (Net)"
           value={formatRupiah(totalTechnicianNet)}
@@ -100,7 +100,7 @@ export default async function TechnicianDashboardPage() {
       </div>
 
       {/* Accounting Breakdown Banner */}
-      <div className="rounded-3xl bg-slate-900 text-white p-6 sm:p-8 space-y-6 shadow-xl">
+      <div className="reveal-on-scroll rounded-3xl bg-slate-900 text-white p-6 sm:p-8 space-y-6 shadow-xl">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
           <div>
             <div className="text-xs uppercase font-bold text-emerald-400 tracking-wider">

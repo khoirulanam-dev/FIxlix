@@ -132,7 +132,7 @@ export default async function HomePage() {
       </section>
 
       {/* 5 Main Categories Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <section className="reveal-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -150,13 +150,12 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {categories.map((cat, idx) => (
+        <div className="stagger-container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {categories.map((cat) => (
             <Link
               key={cat.id}
               href={`/kategori/${cat.slug}`}
-              style={{ animationDelay: `${idx * 60}ms` }}
-              className="group block rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm hover:border-emerald-300 hover-lift animate-fade-in-up"
+              className="group block rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm hover:border-emerald-300 hover-lift"
             >
               <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-100 mb-3">
                 {cat.imageKey && (
@@ -179,7 +178,7 @@ export default async function HomePage() {
       </section>
 
       {/* Popular Services Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <section className="reveal-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -197,14 +196,13 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, idx) => {
+        <div className="stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => {
             const techProfile = service.technician.technicianProfile;
             return (
               <Card
                 key={service.id}
-                style={{ animationDelay: `${idx * 60}ms` }}
-                className="overflow-hidden hover-lift flex flex-col justify-between animate-fade-in-up"
+                className="overflow-hidden hover-lift flex flex-col justify-between"
               >
                 <div>
                   <div className="relative aspect-video w-full bg-slate-100">
@@ -300,7 +298,7 @@ export default async function HomePage() {
       </section>
 
       {/* Verified Technicians Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <section className="reveal-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -318,7 +316,7 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
           {technicians.map((tech) => (
             <Card key={tech.userId} className="overflow-hidden hover:shadow-md transition-all flex flex-col justify-between">
               <CardContent className="p-6 space-y-4">
@@ -400,7 +398,7 @@ export default async function HomePage() {
       </section>
 
       {/* How it Works Section */}
-      <section className="bg-slate-900 text-white py-16">
+      <section className="reveal-section bg-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -411,7 +409,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="stagger-container grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-3">
               <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">
                 1

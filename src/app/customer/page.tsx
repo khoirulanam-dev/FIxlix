@@ -132,7 +132,7 @@ export default async function CustomerDashboardPage() {
       )}
 
       {/* CoolAdmin 4-Card Metrics Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="stagger-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <StatCard
           title="Menunggu Persetujuan"
           value={pendingApproval.length}
@@ -164,7 +164,7 @@ export default async function CustomerDashboardPage() {
       </div>
 
       {/* Recent Orders CoolAdmin Table Card */}
-      <div className="rounded-3xl border border-slate-200/90 bg-white shadow-sm overflow-hidden">
+      <div className="reveal-on-scroll rounded-3xl border border-slate-200/90 bg-white shadow-sm overflow-hidden">
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div>
             <h2 className="text-base font-extrabold text-slate-900">Pesanan Servis Terbaru</h2>

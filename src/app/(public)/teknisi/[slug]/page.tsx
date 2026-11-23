@@ -138,7 +138,7 @@ export default async function TechnicianProfilePage({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <Card key={service.id} className="overflow-hidden hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
@@ -215,7 +215,7 @@ export default async function TechnicianProfilePage({
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="stagger-container space-y-4">
             {reviews.map((rev) => (
               <div
                 key={rev.id}

@@ -24,7 +24,7 @@ export default function TentangPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="stagger-container grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="rounded-2xl bg-white border border-slate-200 p-6 space-y-2">
             <ShieldCheck className="w-8 h-8 text-emerald-600 mb-2" />
             <h3 className="text-lg font-bold text-slate-900">Teknisi Terverifikasi</h3>
