@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { StarRating } from "@/components/shared/star-rating";
 import { PriceDisplay } from "@/components/shared/price-display";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { getServiceById } from "@/modules/catalog/service";
 import { DirectOrderButton } from "./direct-order-button";
 
@@ -87,13 +88,15 @@ export default async function ServiceDetailPage({
               </p>
             </div>
 
-            <div className="rounded-2xl bg-amber-50 border border-amber-200 p-4 flex gap-3 text-xs sm:text-sm text-amber-900">
-              <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+            <Alert variant="warning" className="rounded-2xl">
+              <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" />
               <div>
-                <strong className="font-semibold block mb-1">Ketentuan Harga Layanan:</strong>
-                Harga yang tercantum adalah <strong className="font-semibold">biaya jasa pengerjaan dasar teknisi</strong>. Apabila diperlukan penggantian komponen sparepart atau ada kendala teknis tambahan, biaya sparepart disepakati terpisah melalui konsultasi WhatsApp sebelum dikerjakan.
+                <AlertTitle className="text-amber-950 font-bold mb-1">Ketentuan Harga Layanan</AlertTitle>
+                <AlertDescription className="text-amber-900 leading-relaxed text-xs sm:text-sm">
+                  Harga yang tercantum adalah <strong className="font-semibold">biaya jasa pengerjaan dasar teknisi</strong>. Apabila diperlukan penggantian komponen sparepart atau ada kendala teknis tambahan, biaya sparepart disepakati terpisah melalui konsultasi WhatsApp sebelum dikerjakan.
+                </AlertDescription>
               </div>
-            </div>
+            </Alert>
           </div>
         </div>
 

@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatRupiah, formatDate } from "@/lib/utils";
 import { getOrderStatusLabel, getOrderStatusVariant } from "@/core/domain/order";
-import { ArrowLeft, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Star, ChevronRight, User, Phone, Mail } from "lucide-react";
+import { ArrowLeft, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Star, ChevronRight, User, Phone, Mail, XCircle } from "lucide-react";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { TechnicianOrderActions } from "./technician-order-actions";
 
 export const dynamic = "force-dynamic";
@@ -100,6 +101,18 @@ export default async function TechnicianOrderDetailPage({
                 {order.technicianNotes}
               </p>
             </div>
+          )}
+
+          {order.rejectionReason && (
+            <Alert variant="destructive" className="rounded-xl">
+              <XCircle className="w-5 h-5 text-red-600 shrink-0" />
+              <div>
+                <AlertTitle className="text-red-950 font-bold mb-0.5">Pesanan Ditolak oleh Pelanggan</AlertTitle>
+                <AlertDescription className="text-red-800 leading-relaxed text-xs sm:text-sm">
+                  Alasan: {order.rejectionReason}
+                </AlertDescription>
+              </div>
+            </Alert>
           )}
         </div>
       </div>

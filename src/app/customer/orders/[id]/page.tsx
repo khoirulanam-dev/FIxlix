@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatRupiah, formatDate } from "@/lib/utils";
 import { getOrderStatusLabel, getOrderStatusVariant } from "@/core/domain/order";
-import { ArrowLeft, Clock, ShieldCheck, CheckCircle2, AlertTriangle, CreditCard, Star, ChevronRight, User, Wrench } from "lucide-react";
+import { ArrowLeft, Clock, ShieldCheck, CheckCircle2, AlertTriangle, CreditCard, Star, ChevronRight, User, Wrench, XCircle } from "lucide-react";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { OrderApprovalActions } from "./order-approval-actions";
 
 export const dynamic = "force-dynamic";
@@ -103,14 +104,15 @@ export default async function CustomerOrderDetailPage({
           )}
 
           {order.rejectionReason && (
-            <div>
-              <span className="text-xs font-semibold text-red-600 block mb-1">
-                Alasan Penolakan:
-              </span>
-              <p className="text-xs sm:text-sm text-red-700 bg-red-50 rounded-xl p-3.5 border border-red-200 leading-relaxed">
-                {order.rejectionReason}
-              </p>
-            </div>
+            <Alert variant="destructive" className="rounded-xl">
+              <XCircle className="w-5 h-5 text-red-600 shrink-0" />
+              <div>
+                <AlertTitle className="text-red-950 font-bold mb-0.5">Alasan Penolakan Pesanan</AlertTitle>
+                <AlertDescription className="text-red-800 leading-relaxed text-xs sm:text-sm">
+                  {order.rejectionReason}
+                </AlertDescription>
+              </div>
+            </Alert>
           )}
         </div>
       </div>

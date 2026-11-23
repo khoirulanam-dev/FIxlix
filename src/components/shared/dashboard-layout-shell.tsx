@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -11,6 +11,7 @@ import {
   LogOut,
   Bell,
   ChevronRight,
+  ChevronDown,
   User as UserIcon,
   LucideIcon,
   ExternalLink,
@@ -89,10 +90,27 @@ export function DashboardLayoutShell({
   children,
 }: DashboardLayoutShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    };
+    if (userMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [userMenuOpen]);
+
   const handleSignOut = async () => {
+    setUserMenuOpen(false);
     await signOut();
     router.push("/");
     router.refresh();
@@ -339,30 +357,116 @@ export function DashboardLayoutShell({
 
           {/* Right Header Actions */}
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* User Profile Pill Capsule */}
-            <div className="flex items-center gap-3 pl-3 sm:pl-4 border-l border-slate-200">
-              <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-slate-700 text-xs">
-                {user.image ? (
-                  <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
-                ) : (
-                  <span>{user.name.charAt(0).toUpperCase()}</span>
-                )}
-              </div>
-              <div className="hidden sm:block text-left">
-                <div className="text-xs font-bold text-slate-800 leading-tight">
-                  {user.name}
-                </div>
-                <div className="text-[10px] text-slate-400 capitalize">{user.role?.toLowerCase() || roleLabel.toLowerCase()}</div>
-              </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleSignOut}
-                title="Keluar Akun"
-                className="text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl w-8 h-8"
+            {/* User Profile Dropdown Capsule */}
+            <div className="relative pl-3 sm:pl-4 border-l border-slate-200" ref={userMenuRef}>
+              <button
+                type="button"
+                onClick={() => setUserMenuOpen((prev) => !prev)}
+                className="flex items-center gap-2.5 p-1.5 sm:px-3 sm:py-1.5 rounded-2xl hover:bg-slate-100/80 transition-all border border-transparent hover:border-slate-200 focus:outline-none"
               >
-                <LogOut className="w-4 h-4" />
-              </Button>
+                <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-slate-700 text-xs shadow-xs">
+                  {user.image ? (
+                    <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <span>{user.name.charAt(0).toUpperCase()}</span>
+                  )}
+                </div>
+                <div className="hidden sm:block text-left">
+                  <div className="text-xs font-bold text-slate-800 leading-tight">
+                    {user.name}
+                  </div>
+                  <div className="text-[10px] text-slate-400 capitalize">
+                    {user.role?.toLowerCase() || roleLabel.toLowerCase()}
+                  </div>
+                </div>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
+                    userMenuOpen ? "rotate-180 text-slate-700" : ""
+                  }`}
+                />
+              </button>
+
+              {/* Floating Profile Dropdown Menu */}
+              {userMenuOpen && (
+                <div className="absolute right-0 top-full mt-2 w-64 rounded-2xl bg-white shadow-xl border border-slate-200/90 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  {/* User details header */}
+                  <div className="px-4 py-3 border-b border-slate-100 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-emerald-100 border border-emerald-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-emerald-800 text-sm">
+                      {user.image ? (
+                        <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <span>{user.name.charAt(0).toUpperCase()}</span>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
+                      <div className="text-[11px] text-slate-400 truncate">{user.email}</div>
+                      <div className="mt-1">
+                        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full inline-block ${roleBadgeColor}`}>
+                          {roleLabel}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Menu Items */}
+                  <div className="p-1.5 space-y-0.5 text-xs font-medium text-slate-700">
+                    <Link
+                      href="/"
+                      onClick={() => setUserMenuOpen(false)}
+                      className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                    >
+                      <Home className="w-4 h-4 text-slate-400" />
+                      <span>Halaman Publik Utama</span>
+                    </Link>
+
+                    {user.role === "CUSTOMER" && (
+                      <Link
+                        href="/customer/orders"
+                        onClick={() => setUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                      >
+                        <ShoppingBag className="w-4 h-4 text-slate-400" />
+                        <span>Pesanan Servis Saya</span>
+                      </Link>
+                    )}
+
+                    {user.role === "TECHNICIAN" && (
+                      <Link
+                        href="/technician/orders"
+                        onClick={() => setUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                      >
+                        <ShoppingBag className="w-4 h-4 text-slate-400" />
+                        <span>Kelola Pesanan</span>
+                      </Link>
+                    )}
+
+                    {user.role === "ADMIN" && (
+                      <Link
+                        href="/admin/orders"
+                        onClick={() => setUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                      >
+                        <ShoppingBag className="w-4 h-4 text-slate-400" />
+                        <span>Semua Pesanan</span>
+                      </Link>
+                    )}
+                  </div>
+
+                  {/* Logout Action */}
+                  <div className="pt-1.5 mt-1 border-t border-slate-100 px-1.5">
+                    <button
+                      type="button"
+                      onClick={handleSignOut}
+                      className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Keluar Akun (Sign Out)</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </header>

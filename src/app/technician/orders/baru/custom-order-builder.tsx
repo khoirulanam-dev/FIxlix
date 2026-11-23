@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatRupiah } from "@/lib/utils";
 import { calculatePricing } from "@/core/domain/commission";
-import { Plus, Trash2, Loader2, Sparkles, AlertCircle } from "lucide-react";
+import { Plus, Trash2, Loader2, Sparkles, AlertCircle, ChevronDown } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface CustomerOption {
   id: string;
@@ -175,9 +176,9 @@ export function CustomOrderBuilder({
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       {error && (
-        <div className="p-4 rounded-2xl bg-red-50 text-red-700 text-sm border border-red-200">
-          {error}
-        </div>
+        <Alert variant="destructive">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
 
       {/* 1. Customer & Category Section */}
@@ -188,60 +189,75 @@ export function CustomOrderBuilder({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <Label htmlFor="customer">Pilih Pelanggan Terdaftar *</Label>
-            <select
-              id="customer"
-              value={selectedCustomerId}
-              onChange={(e) => setSelectedCustomerId(e.target.value)}
-              className="w-full h-11 px-3.5 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              required
-            >
-              {customers.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name} ({c.email} {c.phone ? `• ${c.phone}` : ""})
-                </option>
-              ))}
-            </select>
+            <Label htmlFor="customer" className="text-xs font-semibold text-slate-700">
+              Pilih Pelanggan Terdaftar *
+            </Label>
+            <div className="relative">
+              <select
+                id="customer"
+                value={selectedCustomerId}
+                onChange={(e) => setSelectedCustomerId(e.target.value)}
+                className="w-full h-11 pl-3.5 pr-10 rounded-xl border border-slate-200/90 text-sm bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 appearance-none transition-all shadow-xs cursor-pointer hover:border-slate-300"
+                required
+              >
+                {customers.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name} ({c.email} {c.phone ? `• ${c.phone}` : ""})
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="category">Kategori Peralatan *</Label>
-            <select
-              id="category"
-              value={selectedCategoryId}
-              onChange={(e) => {
-                setSelectedCategoryId(e.target.value);
-                setSelectedServiceId("");
-              }}
-              className="w-full h-11 px-3.5 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              required
-            >
-              {categories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
+            <Label htmlFor="category" className="text-xs font-semibold text-slate-700">
+              Kategori Peralatan *
+            </Label>
+            <div className="relative">
+              <select
+                id="category"
+                value={selectedCategoryId}
+                onChange={(e) => {
+                  setSelectedCategoryId(e.target.value);
+                  setSelectedServiceId("");
+                }}
+                className="w-full h-11 pl-3.5 pr-10 rounded-xl border border-slate-200/90 text-sm bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 appearance-none transition-all shadow-xs cursor-pointer hover:border-slate-300"
+                required
+              >
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
           </div>
         </div>
 
         {/* Optional service reference */}
         {filteredServices.length > 0 && (
           <div className="space-y-1.5">
-            <Label htmlFor="service">Rujukan Layanan Katalog Anda (Opsional)</Label>
-            <select
-              id="service"
-              value={selectedServiceId}
-              onChange={(e) => handleServiceChange(e.target.value)}
-              className="w-full h-11 px-3.5 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            >
-              <option value="">-- Tanpa Rujukan Katalog (Custom Penuh) --</option>
-              {filteredServices.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.title} (Jasa dasar: {formatRupiah(s.laborBasePrice)})
-                </option>
-              ))}
-            </select>
+            <Label htmlFor="service" className="text-xs font-semibold text-slate-700">
+              Rujukan Layanan Katalog Anda (Opsional)
+            </Label>
+            <div className="relative">
+              <select
+                id="service"
+                value={selectedServiceId}
+                onChange={(e) => handleServiceChange(e.target.value)}
+                className="w-full h-11 pl-3.5 pr-10 rounded-xl border border-slate-200/90 text-sm bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 appearance-none transition-all shadow-xs cursor-pointer hover:border-slate-300"
+              >
+                <option value="">-- Tanpa Rujukan Katalog (Custom Penuh) --</option>
+                {filteredServices.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.title} (Jasa dasar: {formatRupiah(s.laborBasePrice)})
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
           </div>
         )}
 

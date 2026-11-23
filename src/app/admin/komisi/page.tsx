@@ -5,6 +5,7 @@ import { getAdminMetrics } from "@/modules/admin/service";
 import { formatDate } from "@/lib/utils";
 import { Percent, History, ShieldAlert, ChevronRight } from "lucide-react";
 import { CommissionForm } from "./commission-form";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 export const dynamic = "force-dynamic";
 
@@ -36,13 +37,12 @@ export default async function AdminCommissionPage() {
       <CommissionForm currentRate={metrics.currentCommissionRate} />
 
       {/* Immutable Snapshot Notice */}
-      <div className="rounded-2xl bg-amber-50/80 border border-amber-200/90 p-5 flex gap-3.5 text-xs sm:text-sm text-amber-900 shadow-sm">
-        <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-        <div className="leading-relaxed">
-          <strong className="font-semibold block mb-1">Prinsip Integritas Akuntansi Transaksi:</strong>
-          Setiap order menyimpan snapshot persentase komisi (<code className="bg-amber-100/80 px-1 py-0.5 rounded font-mono text-xs">commission_rate_snapshot</code>) saat pesanan dibuat. Perubahan persentase komisi di atas hanya akan berlaku untuk pesanan baru di masa mendatang, sehingga data akuntansi dan histori keuangan masa lalu tetap valid dan tidak berubah.
-        </div>
-      </div>
+      <Alert variant="warning">
+        <AlertTitle className="text-amber-950">Prinsip Integritas Akuntansi Transaksi</AlertTitle>
+        <AlertDescription className="text-amber-900 leading-relaxed">
+          Setiap order menyimpan snapshot persentase komisi (<code className="bg-amber-100/90 px-1.5 py-0.5 rounded font-mono text-xs">commission_rate_snapshot</code>) saat pesanan dibuat. Perubahan persentase komisi di atas hanya akan berlaku untuk pesanan baru di masa mendatang, sehingga data akuntansi dan histori keuangan masa lalu tetap valid dan tidak berubah.
+        </AlertDescription>
+      </Alert>
 
       {/* Versioned History Table */}
       <div className="rounded-2xl border border-slate-200/90 bg-white shadow-sm overflow-hidden">

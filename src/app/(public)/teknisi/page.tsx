@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Search, Filter, ShieldCheck, MapPin } from "lucide-react";
+import { Search, Filter, ShieldCheck, MapPin, ChevronDown } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -61,11 +61,11 @@ export default async function TechniciansPage({
             />
           </div>
 
-          <div className="w-full md:w-64">
+          <div className="w-full md:w-64 relative">
             <select
               name="category"
               defaultValue={category || ""}
-              className="w-full py-2.5 px-3.5 rounded-xl border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-700"
+              className="w-full py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-700 appearance-none shadow-xs transition-colors hover:border-slate-400"
             >
               <option value="">Semua Kategori</option>
               {categories.map((c) => (
@@ -74,6 +74,7 @@ export default async function TechniciansPage({
                 </option>
               ))}
             </select>
+            <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
 
           <Button type="submit" className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-6">

@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { formatRupiah } from "@/lib/utils";
-import { QrCode, Building, Wallet, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
+import { QrCode, Building, Wallet, CheckCircle2, Loader2, ShieldCheck, AlertCircle } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface CheckoutPaymentFormProps {
   orderId: string;
@@ -85,9 +86,10 @@ export function CheckoutPaymentForm({
 
       <div className="p-6 space-y-5">
         {error && (
-          <div className="p-3 rounded-xl bg-red-50 text-red-700 text-xs border border-red-200">
-            {error}
-          </div>
+          <Alert variant="destructive" className="rounded-xl">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <AlertDescription className="text-xs">{error}</AlertDescription>
+          </Alert>
         )}
 
         {/* Methods Radio Cards */}
