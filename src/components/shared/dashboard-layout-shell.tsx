@@ -215,34 +215,40 @@ export function DashboardLayoutShell({
       {sidebarOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+            className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
             onClick={() => setSidebarOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-72 bg-white shadow-2xl flex flex-col z-50 animate-in slide-in-from-left duration-200">
-            <div className="h-18 flex items-center justify-between px-6 border-b border-slate-100">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">
-                  <Wrench className="w-4 h-4" />
+          <div className="fixed inset-y-0 left-0 w-[84vw] max-w-[320px] bg-white shadow-2xl flex flex-col z-50 animate-in slide-in-from-left duration-200 border-r border-slate-200">
+            {/* Drawer Header */}
+            <div className="h-16 px-6 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-sm shadow-emerald-500/20">
+                  <Wrench className="w-5 h-5" />
                 </div>
-                <span className="font-bold text-lg text-slate-900">Fixlix</span>
+                <div>
+                  <span className="font-extrabold text-base text-slate-900 block leading-tight">Fixlix</span>
+                  <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Portal Servis</span>
+                </div>
               </div>
               <button
                 onClick={() => setSidebarOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 active:scale-95 transition-all"
+                aria-label="Tutup menu"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+            {/* Navigation Body with comfortable top spacing */}
+            <div className="flex-1 overflow-y-auto px-5 pt-8 pb-6 space-y-6">
               {navSections.map((section, idx) => (
-                <div key={idx} className="space-y-1">
+                <div key={idx} className="space-y-3">
                   {section.title && (
-                    <div className="px-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                    <div className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                       {section.title}
                     </div>
                   )}
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     {section.items.map((item) => {
                       const active = isActive(item.href);
                       const Icon = ICON_MAP[item.iconName] || LayoutDashboard;
@@ -251,16 +257,25 @@ export function DashboardLayoutShell({
                           key={item.href}
                           href={item.href}
                           onClick={() => setSidebarOpen(false)}
-                          className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                          className={`flex items-center justify-between px-4 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all ${
                             active
-                              ? "bg-emerald-600 text-white font-bold"
-                              : "text-slate-600 hover:bg-slate-100"
+                              ? "bg-emerald-600 text-white font-bold shadow-md shadow-emerald-600/20"
+                              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                           }`}
                         >
-                          <div className="flex items-center gap-3">
-                            <Icon className={`w-4 h-4 ${active ? "text-white" : "text-slate-500"}`} />
+                          <div className="flex items-center gap-3.5">
+                            <Icon className={`w-5 h-5 ${active ? "text-white" : "text-slate-500"}`} />
                             <span>{item.label}</span>
                           </div>
+                          {item.badge !== undefined && (
+                            <span
+                              className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                                active ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-800"
+                              }`}
+                            >
+                              {item.badge}
+                            </span>
+                          )}
                         </Link>
                       );
                     })}
@@ -269,25 +284,45 @@ export function DashboardLayoutShell({
               ))}
             </div>
 
-            <div className="p-4 border-t border-slate-100 space-y-2">
-              <Link href="/" onClick={() => setSidebarOpen(false)}>
-                <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 gap-2">
-                  <Home className="w-4 h-4" />
-                  <span>Ke Beranda</span>
+            {/* Drawer Footer with User Info & Actions */}
+            <div className="p-5 border-t border-slate-150 bg-slate-50/70 space-y-3 shrink-0">
+              <div className="flex items-center gap-3 p-2.5 rounded-2xl bg-white border border-slate-200/80 shadow-2xs">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-200 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0 overflow-hidden">
+                  {user.image ? (
+                    <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <span>{user.name.charAt(0).toUpperCase()}</span>
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
+                  <div className="text-[11px] text-slate-500 truncate">{user.email}</div>
+                </div>
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md shrink-0 ${roleBadgeColor}`}>
+                  {roleLabel}
+                </span>
+              </div>
+
+              <div className="space-y-1">
+                <Link href="/" onClick={() => setSidebarOpen(false)}>
+                  <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-slate-900 hover:bg-white gap-2.5 rounded-xl font-medium">
+                    <Home className="w-4 h-4 text-slate-400" />
+                    <span>Lihat Halaman Publik</span>
+                  </Button>
+                </Link>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setSidebarOpen(false);
+                    handleSignOut();
+                  }}
+                  className="w-full justify-start text-xs text-red-600 hover:text-red-700 hover:bg-red-50 gap-2.5 rounded-xl font-medium"
+                >
+                  <LogOut className="w-4 h-4 text-red-400" />
+                  <span>Keluar Akun (Sign Out)</span>
                 </Button>
-              </Link>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  setSidebarOpen(false);
-                  handleSignOut();
-                }}
-                className="w-full justify-start text-xs text-red-600 gap-2"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Keluar Akun</span>
-              </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -296,7 +331,7 @@ export function DashboardLayoutShell({
       {/* 3. Main Content Container (Pushed right by lg:pl-72) */}
       <div className="flex-1 lg:pl-72 flex flex-col min-w-0">
         {/* CoolAdmin Top Navigation Bar */}
-        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs h-18 sm:h-20 px-4 sm:px-8 flex items-center justify-between">
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs h-16 sm:h-20 px-4 sm:px-8 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -348,139 +383,147 @@ export function DashboardLayoutShell({
 
               {/* Floating Profile Dropdown Menu */}
               {userMenuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-72 rounded-2xl bg-white/98 backdrop-blur-md shadow-2xl border border-slate-200/90 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                  {/* User details header */}
-                  <div className="px-4 py-3 border-b border-slate-100 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-emerald-100 border border-emerald-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-emerald-800 text-sm shadow-2xs">
-                      {user.image ? (
-                        <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
-                      ) : (
-                        <span>{user.name.charAt(0).toUpperCase()}</span>
-                      )}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-sm font-bold text-slate-900 truncate">{user.name}</div>
-                      <div className="text-xs text-slate-500 truncate">{user.email}</div>
-                      <div className="mt-1">
-                        <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full inline-block ${roleBadgeColor}`}>
-                          {roleLabel}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <>
+                  {/* Backdrop overlay for mobile to prevent accidental taps underneath and provide visual separation */}
+                  <div
+                    className="fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-[2px] sm:hidden"
+                    onClick={() => setUserMenuOpen(false)}
+                  />
 
-                  {/* Menu Items */}
-                  <div className="p-1.5 space-y-1 text-xs font-medium text-slate-700">
-                    <Link
-                      href="/"
-                      onClick={() => setUserMenuOpen(false)}
-                      className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
-                          <Home className="w-4 h-4" />
+                  <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-sm rounded-2xl bg-white shadow-2xl shadow-slate-900/25 border border-slate-200 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    {/* User details header */}
+                    <div className="px-4 py-3.5 border-b border-slate-100 bg-slate-50/90 rounded-t-2xl -mt-2 flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-full bg-emerald-100 border border-emerald-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-emerald-800 text-sm shadow-2xs">
+                        {user.image ? (
+                          <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <span>{user.name.charAt(0).toUpperCase()}</span>
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-bold text-slate-900 truncate">{user.name}</div>
+                        <div className="text-xs text-slate-500 truncate">{user.email}</div>
+                        <div className="mt-1">
+                          <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full inline-block ${roleBadgeColor}`}>
+                            {roleLabel}
+                          </span>
                         </div>
-                        <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Halaman Publik Utama</span>
                       </div>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
-                    </Link>
+                    </div>
 
-                    {user.role === "CUSTOMER" && (
-                      <>
-                        <Link
-                          href="/customer/profil"
-                          onClick={() => setUserMenuOpen(false)}
-                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
-                              <UserIcon className="w-4 h-4" />
-                            </div>
-                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Profil & Foto Saya</span>
-                          </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
-                        </Link>
-                        <Link
-                          href="/customer/orders"
-                          onClick={() => setUserMenuOpen(false)}
-                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
-                              <ShoppingBag className="w-4 h-4" />
-                            </div>
-                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Pesanan Servis Saya</span>
-                          </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
-                        </Link>
-                      </>
-                    )}
-
-                    {user.role === "TECHNICIAN" && (
-                      <>
-                        <Link
-                          href="/technician/profil"
-                          onClick={() => setUserMenuOpen(false)}
-                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
-                              <UserIcon className="w-4 h-4" />
-                            </div>
-                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Profil & Foto Saya</span>
-                          </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
-                        </Link>
-                        <Link
-                          href="/technician/orders"
-                          onClick={() => setUserMenuOpen(false)}
-                          className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
-                              <ShoppingBag className="w-4 h-4" />
-                            </div>
-                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Kelola Pesanan</span>
-                          </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
-                        </Link>
-                      </>
-                    )}
-
-                    {user.role === "ADMIN" && (
+                    {/* Menu Items */}
+                    <div className="p-2 space-y-1 text-xs font-medium text-slate-700 bg-white">
                       <Link
-                        href="/admin/orders"
+                        href="/"
                         onClick={() => setUserMenuOpen(false)}
-                        className="group flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                        className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 transition-colors"
                       >
                         <div className="flex items-center gap-2.5">
                           <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
-                            <ShoppingBag className="w-4 h-4" />
+                            <Home className="w-4 h-4" />
                           </div>
-                          <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Semua Pesanan</span>
+                          <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Halaman Publik Utama</span>
                         </div>
                         <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
                       </Link>
-                    )}
-                  </div>
 
-                  {/* Logout Action */}
-                  <div className="pt-2 mt-1 border-t border-slate-100 px-1.5">
-                    <button
-                      type="button"
-                      onClick={handleSignOut}
-                      className="group w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-lg bg-red-100/60 text-red-600 flex items-center justify-center group-hover:bg-red-100 transition-colors">
-                          <LogOut className="w-4 h-4" />
+                      {user.role === "CUSTOMER" && (
+                        <>
+                          <Link
+                            href="/customer/profil"
+                            onClick={() => setUserMenuOpen(false)}
+                            className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 transition-colors"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                                <UserIcon className="w-4 h-4" />
+                              </div>
+                              <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Profil & Foto Saya</span>
+                            </div>
+                            <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+                          </Link>
+                          <Link
+                            href="/customer/orders"
+                            onClick={() => setUserMenuOpen(false)}
+                            className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 transition-colors"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                                <ShoppingBag className="w-4 h-4" />
+                              </div>
+                              <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Pesanan Servis Saya</span>
+                            </div>
+                            <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+                          </Link>
+                        </>
+                      )}
+
+                      {user.role === "TECHNICIAN" && (
+                        <>
+                          <Link
+                            href="/technician/profil"
+                            onClick={() => setUserMenuOpen(false)}
+                            className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 transition-colors"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                                <UserIcon className="w-4 h-4" />
+                              </div>
+                              <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Profil & Foto Saya</span>
+                            </div>
+                            <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+                          </Link>
+                          <Link
+                            href="/technician/orders"
+                            onClick={() => setUserMenuOpen(false)}
+                            className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 transition-colors"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                                <ShoppingBag className="w-4 h-4" />
+                              </div>
+                              <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Kelola Pesanan</span>
+                            </div>
+                            <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+                          </Link>
+                        </>
+                      )}
+
+                      {user.role === "ADMIN" && (
+                        <Link
+                          href="/admin/orders"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="group flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 transition-colors"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                              <ShoppingBag className="w-4 h-4" />
+                            </div>
+                            <span className="font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">Semua Pesanan</span>
+                          </div>
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+                        </Link>
+                      )}
+                    </div>
+
+                    {/* Logout Action */}
+                    <div className="pt-2 mt-1 border-t border-slate-100 px-2 bg-white rounded-b-2xl">
+                      <button
+                        type="button"
+                        onClick={handleSignOut}
+                        className="group w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-7 h-7 rounded-lg bg-red-100/60 text-red-600 flex items-center justify-center group-hover:bg-red-100 transition-colors">
+                            <LogOut className="w-4 h-4" />
+                          </div>
+                          <span>Keluar Akun (Sign Out)</span>
                         </div>
-                        <span>Keluar Akun (Sign Out)</span>
-                      </div>
-                      <ChevronRight className="w-3.5 h-3.5 text-red-300 group-hover:text-red-500 transition-colors" />
-                    </button>
+                        <ChevronRight className="w-3.5 h-3.5 text-red-300 group-hover:text-red-500 transition-colors" />
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
             </div>
           </div>
