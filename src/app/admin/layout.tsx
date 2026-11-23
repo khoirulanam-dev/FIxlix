@@ -11,7 +11,7 @@ export default async function AdminLayout({
 
   const navSections: NavSection[] = [
     {
-      title: "Manajemen Eksekutif",
+      title: "Manajemen Platform",
       items: [
         {
           label: "Overview & Laporan",
@@ -19,7 +19,7 @@ export default async function AdminLayout({
           iconName: "LayoutDashboard",
         },
         {
-          label: "Kelola & Verifikasi Teknisi",
+          label: "Kelola & Tambah Teknisi",
           href: "/admin/teknisi",
           iconName: "ShieldCheck",
         },
@@ -31,7 +31,7 @@ export default async function AdminLayout({
       ],
     },
     {
-      title: "Akuntansi & Finansial",
+      title: "Keuangan & Transaksi",
       items: [
         {
           label: "Pengaturan Komisi Platform",

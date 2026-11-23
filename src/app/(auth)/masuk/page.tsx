@@ -115,14 +115,6 @@ function LoginFormContent() {
         </Button>
       </form>
 
-      {/* Helper seed logins reminder for testing */}
-      <div className="rounded-xl bg-slate-50 p-3 border border-slate-200 text-xs text-slate-600 space-y-1">
-        <div className="font-semibold text-slate-800">Akun Pengujian Cepat:</div>
-        <div>• Pelanggan: <code>budi.santoso@gmail.com</code> / <code>Fixlix123!</code></div>
-        <div>• Teknisi: <code>joko.teknisi@fixlix.co.id</code> / <code>Fixlix123!</code></div>
-        <div>• Admin: <code>admin@fixlix.co.id</code> / <code>AdminFixlix123!</code></div>
-      </div>
-
       <div className="text-center text-xs text-slate-600">
         Belum punya akun?{" "}
         <Link href="/daftar" className="text-emerald-600 font-semibold hover:underline">

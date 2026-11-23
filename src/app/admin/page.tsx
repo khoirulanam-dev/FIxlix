@@ -33,15 +33,15 @@ export default async function AdminDashboardPage() {
           <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium mb-1">
             <span>Fixlix</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-slate-600 font-semibold">Admin Panel</span>
+            <span className="text-slate-600 font-semibold">Panel Admin</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-purple-600 font-semibold">Executive Overview</span>
+            <span className="text-emerald-600 font-semibold">Ringkasan Eksekutif</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            Executive Management Accounting Dashboard
+            Ringkasan Operasional & Keuangan Platform
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Analisis arus kas marketplace, pendapatan komisi platform, hak bersih teknisi, dan performa kategori.
+            Pemantauan arus transaksi, pendapatan komisi platform, hak bersih mitra teknisi, dan performa kategori.
           </p>
         </div>
 

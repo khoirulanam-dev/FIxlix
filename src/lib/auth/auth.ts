@@ -69,6 +69,35 @@ export const auth = betterAuth({
       },
     },
   },
+  databaseHooks: {
+    user: {
+      create: {
+        after: async (user) => {
+          if ((user as any).role === "TECHNICIAN") {
+            try {
+              const cleanWa = ((user as any).phone || "").replace(/[^0-9]/g, "").replace(/^0/, "62");
+              const baseSlug = (user.name || "teknisi").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+              const slug = `${baseSlug || "teknisi"}-${user.id.slice(-6)}`;
+              await db
+                .insert(schema.technicianProfiles)
+                .values({
+                  userId: user.id,
+                  slug,
+                  displayName: user.name,
+                  whatsappPhone: cleanWa || "628000000000",
+                  bio: "Teknisi mitra Fixlix profesional siap melayani perbaikan peralatan elektronik dengan diagnosa jujur & transparan.",
+                  serviceAreaText: "Jabodetabek",
+                  verificationStatus: "VERIFIED",
+                })
+                .onConflictDoNothing();
+            } catch (err) {
+              console.error("Auto-provision technician profile error:", err);
+            }
+          }
+        },
+      },
+    },
+  },
 });
 
 export type Session = typeof auth.$Infer.Session;

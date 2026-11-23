@@ -45,6 +45,16 @@ export default async function TechnicianLayout({
         },
       ],
     },
+    {
+      title: "Pengaturan & Akun",
+      items: [
+        {
+          label: "Profil & Nomor WhatsApp",
+          href: "/technician/profil",
+          iconName: "User",
+        },
+      ],
+    },
   ];
 
   return (

@@ -40,6 +40,7 @@ export type NavIconName =
   | "Percent"
   | "CreditCard"
   | "Users"
+  | "User"
   | "Wrench";
 
 const ICON_MAP: Record<NavIconName, LucideIcon> = {
@@ -53,6 +54,7 @@ const ICON_MAP: Record<NavIconName, LucideIcon> = {
   Percent,
   CreditCard,
   Users,
+  User: UserIcon,
   Wrench,
 };
 
@@ -126,28 +128,28 @@ export function DashboardLayoutShell({
   return (
     <div className="min-h-screen bg-[#f3f5f8] flex flex-col antialiased">
       {/* 1. Desktop Fixed Sidebar - Classic CoolAdmin Style */}
-      <aside className="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 z-50 bg-white border-r border-slate-200/90 shadow-sm">
+      <aside className="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:top-0 lg:bottom-0 lg:left-0 z-50 bg-white border-r border-slate-200/90 shadow-sm h-screen max-h-screen overflow-hidden">
         {/* CoolAdmin Brand Header */}
-        <div className="h-20 flex items-center px-6 border-b border-slate-100 bg-white">
+        <div className="h-16 flex items-center px-6 border-b border-slate-100 bg-white shrink-0">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-              <Wrench className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+              <Wrench className="w-4.5 h-4.5" />
             </div>
             <div>
-              <span className="font-extrabold text-xl tracking-tight text-slate-900 block">
+              <span className="font-extrabold text-lg tracking-tight text-slate-900 block leading-tight">
                 Fixlix
               </span>
-              <span className="text-xs text-slate-400 font-medium tracking-tight block">
+              <span className="text-[11px] text-slate-400 font-medium tracking-tight block">
                 Electronic Repair Portal
               </span>
             </div>
           </Link>
         </div>
 
-        {/* Navigation Sections & Quick Actions (Grouped at top to eliminate desktop scrolling) */}
-        <div className="flex-1 overflow-y-auto px-4 py-5 space-y-6">
+        {/* Navigation Sections */}
+        <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-4">
           {navSections.map((section, idx) => (
-            <div key={idx} className="space-y-1.5">
+            <div key={idx} className="space-y-1">
               {section.title && (
                 <div className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                   {section.title}
@@ -188,26 +190,26 @@ export function DashboardLayoutShell({
               </div>
             </div>
           ))}
+        </div>
 
-          {/* Moved Up to utilize the empty space directly under menu items */}
-          <div className="pt-3 border-t border-slate-150 space-y-1">
-            <Link href="/">
-              <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 gap-2.5 rounded-xl h-9">
-                <Home className="w-4 h-4 text-slate-400" />
-                <span>Lihat Halaman Publik</span>
-                <ExternalLink className="w-3 h-3 ml-auto text-slate-300" />
-              </Button>
-            </Link>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleSignOut}
-              className="w-full justify-start text-xs text-red-600 hover:text-red-700 hover:bg-red-50 gap-2.5 rounded-xl h-9"
-            >
-              <LogOut className="w-4 h-4 text-red-400" />
-              <span>Keluar Akun (Sign Out)</span>
+        {/* Bottom Section: Footer Actions permanently anchored at bottom without needing scroll */}
+        <div className="p-3.5 border-t border-slate-100 bg-white shrink-0 space-y-1 mt-auto">
+          <Link href="/">
+            <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 gap-2.5 rounded-xl h-9 font-medium">
+              <Home className="w-4 h-4 text-slate-400" />
+              <span>Lihat Halaman Publik</span>
+              <ExternalLink className="w-3 h-3 ml-auto text-slate-300" />
             </Button>
-          </div>
+          </Link>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleSignOut}
+            className="w-full justify-start text-xs text-red-600 hover:text-red-700 hover:bg-red-50 gap-2.5 rounded-xl h-9 font-semibold"
+          >
+            <LogOut className="w-4 h-4 text-red-400" />
+            <span>Keluar Akun (Sign Out)</span>
+          </Button>
         </div>
       </aside>
 
@@ -307,20 +309,18 @@ export function DashboardLayoutShell({
                   </div>
                 ))}
 
-                {/* Quick Link to Home */}
-                <div className="pt-2 border-t border-slate-100">
-                  <Link href="/" onClick={() => setSidebarOpen(false)}>
-                    <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-slate-900 hover:bg-slate-100 gap-3 rounded-xl font-medium px-3.5 py-2.5 h-auto">
-                      <Home className="w-4.5 h-4.5 text-slate-400" />
-                      <span>Lihat Halaman Publik</span>
-                    </Button>
-                  </Link>
-                </div>
               </div>
             </div>
 
-            {/* Bottom Section: Sign Out Button strictly anchored at bottom */}
-            <div className="p-4 border-t border-slate-150 bg-slate-50/80 shrink-0">
+            {/* Bottom Section: Footer Actions strictly anchored at bottom */}
+            <div className="p-3.5 border-t border-slate-150 bg-slate-50/80 shrink-0 space-y-1">
+              <Link href="/" onClick={() => setSidebarOpen(false)}>
+                <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-slate-900 hover:bg-white gap-2.5 rounded-xl font-medium px-3 py-2 h-auto">
+                  <Home className="w-4 h-4 text-slate-400" />
+                  <span>Lihat Halaman Publik</span>
+                  <ExternalLink className="w-3 h-3 ml-auto text-slate-300" />
+                </Button>
+              </Link>
               <Button
                 variant="ghost"
                 size="sm"
@@ -328,9 +328,9 @@ export function DashboardLayoutShell({
                   setSidebarOpen(false);
                   handleSignOut();
                 }}
-                className="w-full justify-start text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 gap-3 rounded-xl px-3.5 py-3 h-auto"
+                className="w-full justify-start text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 gap-2.5 rounded-xl px-3 py-2 h-auto"
               >
-                <LogOut className="w-4.5 h-4.5 text-red-500" />
+                <LogOut className="w-4 h-4 text-red-500" />
                 <span>Keluar Akun (Sign Out)</span>
               </Button>
             </div>
@@ -394,9 +394,9 @@ export function DashboardLayoutShell({
               {/* Floating Profile Dropdown Menu */}
               {userMenuOpen && (
                 <>
-                  {/* Backdrop overlay for mobile to prevent accidental taps underneath and provide visual separation */}
+                  {/* Backdrop overlay transparan untuk mobile tanpa efek gelap */}
                   <div
-                    className="fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-[2px] sm:hidden"
+                    className="fixed inset-0 z-40 bg-transparent sm:hidden"
                     onClick={() => setUserMenuOpen(false)}
                   />
 

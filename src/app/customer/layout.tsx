@@ -25,6 +25,16 @@ export default async function CustomerLayout({
         },
       ],
     },
+    {
+      title: "Pengaturan",
+      items: [
+        {
+          label: "Profil Saya",
+          href: "/customer/profil",
+          iconName: "User",
+        },
+      ],
+    },
   ];
 
   return (

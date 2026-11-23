@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { StarRating } from "@/components/shared/star-rating";
 import { ChevronRight, ShieldCheck, Mail, Phone, MapPin, Wrench } from "lucide-react";
 import { TechnicianVerificationButtons } from "./technician-verification-buttons";
+import { AdminAddTechnicianDialog } from "./admin-add-technician-dialog";
 
 export const dynamic = "force-dynamic";
 
@@ -49,9 +50,12 @@ export default async function AdminTechniciansPage() {
           </p>
         </div>
 
-        <span className="text-xs font-semibold text-slate-700 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
-          Total Terdaftar: <strong className="text-emerald-600">{technicians.length}</strong>
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="text-xs font-semibold text-slate-700 bg-white px-3.5 py-2.5 rounded-xl border border-slate-200 shadow-sm">
+            Total Terdaftar: <strong className="text-emerald-600">{technicians.length}</strong>
+          </span>
+          <AdminAddTechnicianDialog />
+        </div>
       </div>
 
       <div className="space-y-4">

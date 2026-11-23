@@ -142,21 +142,23 @@ async function seed() {
     },
     {
       id: "usr-cust-01",
-      name: "Budi Santoso",
-      email: "budi.santoso@gmail.com",
+      name: "Anam",
+      email: "anam@gmail.com",
       role: "CUSTOMER" as const,
       phone: "081288889999",
       image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=300",
     },
     {
       id: "usr-cust-02",
-      name: "Siti Aminah",
-      email: "siti.aminah@gmail.com",
+      name: "Ensa",
+      email: "ensa@gmail.com",
       role: "CUSTOMER" as const,
       phone: "081777778888",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300",
     },
   ];
+
+  const COMMON_PASSWORD_HASH = "0d0ae0dc52783b6c389689b42fff9bca:ecd191c5dbb91154e15bca55bcef825a3f0d8e4b6f29a54149febd4a2c9c125f71a526a9e8e59400e4173c139fec237beccb0a4eb0aab9e5e6acd9ab5ee1ef93"; // AdminFixlix123!
 
   for (const u of seedUsers) {
     await db
@@ -183,12 +185,26 @@ async function seed() {
         },
       });
 
-    // Insert or update credential account
-    // Note: Better Auth checks accounts table for providerId = 'credential'
-    // We will ensure a standard hash is present.
-    // In Better Auth, password can be stored hashed with scrypt or bcrypt.
-    // Let's set a reliable scrypt or simple hash that we can verify.
-    // We'll also provide a helper in auth.
+    // Insert or update credential account with the common password AdminFixlix123!
+    await db
+      .insert(schema.accounts)
+      .values({
+        id: `acc-${u.id}`,
+        accountId: u.id,
+        providerId: "credential",
+        userId: u.id,
+        password: COMMON_PASSWORD_HASH,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })
+      .onConflictDoUpdate({
+        target: schema.accounts.id,
+        set: {
+          password: COMMON_PASSWORD_HASH,
+          userId: u.id,
+          updatedAt: new Date(),
+        },
+      });
   }
 
   // 4. Seed Technician Profiles
@@ -348,6 +364,66 @@ async function seed() {
           imageKey: s.imageKey,
           isActive: s.isActive,
           updatedAt: new Date(),
+        },
+      });
+  }
+
+  // 5b. Seed Portfolio Items
+  console.log("5b. Seeding Portfolio Items...");
+  const portfolioData = [
+    {
+      id: "port-001",
+      technicianId: "usr-tech-01",
+      imageKey: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=800",
+      caption: "Cuci total AC Daikin Inverter & pembersihan evaporator berlumut",
+      sortOrder: 1,
+      moderationStatus: "PUBLISHED" as const,
+    },
+    {
+      id: "port-002",
+      technicianId: "usr-tech-01",
+      imageKey: "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&q=80&w=800",
+      caption: "Reparasi kulkas inverter Sharp 2 pintu, ganti sensor defrost bimetal",
+      sortOrder: 2,
+      moderationStatus: "PUBLISHED" as const,
+    },
+    {
+      id: "port-003",
+      technicianId: "usr-tech-02",
+      imageKey: "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&q=80&w=800",
+      caption: "Penggantian 1 set strip LED backlight TV LG 43 Inch",
+      sortOrder: 1,
+      moderationStatus: "PUBLISHED" as const,
+    },
+    {
+      id: "port-004",
+      technicianId: "usr-tech-03",
+      imageKey: "https://images.unsplash.com/photo-1544233726-9f1d2b27be8b?auto=format&fit=crop&q=80&w=800",
+      caption: "Servis Magic Com Miyako nasi cepat basi, ganti heater penutup",
+      sortOrder: 1,
+      moderationStatus: "PUBLISHED" as const,
+    },
+    {
+      id: "port-005",
+      technicianId: "usr-tech-03",
+      imageKey: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&q=80&w=800",
+      caption: "Reparasi kipas angin dinding Maspion as macet & ganti bushing kuningan",
+      sortOrder: 2,
+      moderationStatus: "PUBLISHED" as const,
+    },
+  ];
+
+  for (const item of portfolioData) {
+    await db
+      .insert(schema.portfolioItems)
+      .values(item)
+      .onConflictDoUpdate({
+        target: schema.portfolioItems.id,
+        set: {
+          imageKey: item.imageKey,
+          caption: item.caption,
+          sortOrder: item.sortOrder,
+          moderationStatus: item.moderationStatus,
         },
       });
   }
