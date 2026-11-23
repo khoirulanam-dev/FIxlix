@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { formatRupiah } from "@/lib/utils";
-import { QrCode, Building, Wallet, CheckCircle2, Loader2, ShieldCheck, AlertCircle } from "lucide-react";
+import { QrCode, Building, Wallet, CheckCircle2, Loader2, ShieldCheck, AlertCircle, ArrowLeft } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface CheckoutPaymentFormProps {
@@ -56,19 +57,32 @@ export function CheckoutPaymentForm({
 
   if (success) {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-white p-8 text-center space-y-4 shadow-sm">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-200">
+      <div className="rounded-2xl border border-emerald-200 bg-white p-8 text-center space-y-5 shadow-sm">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-200 shadow-xs">
           <CheckCircle2 className="w-9 h-9" />
         </div>
-        <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-          Pembayaran Berhasil!
-        </h2>
-        <p className="text-sm text-slate-600 max-w-md mx-auto">
-          Transaksi sebesar <strong className="font-mono text-slate-900">{formatRupiah(totalAmount)}</strong> telah berhasil dicatat. Status pesanan kini berlanjut ke tahap pengerjaan teknisi.
-        </p>
-        <p className="text-xs text-slate-400">
-          Mengarahkan kembali ke detail pesanan...
-        </p>
+        <div className="space-y-1.5">
+          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Pembayaran Berhasil!
+          </h2>
+          <p className="text-sm text-slate-600 max-w-md mx-auto">
+            Transaksi sebesar <strong className="font-mono text-slate-900">{formatRupiah(totalAmount)}</strong> telah berhasil diverifikasi. Dana Anda aman bersama Fixlix dan pesanan diteruskan ke teknisi.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <Link href={`/customer/orders/${orderId}`} className="w-full sm:w-auto">
+            <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-11 px-5 rounded-xl shadow-sm">
+              <span>Lihat Detail & Panduan Servis</span>
+            </Button>
+          </Link>
+          <Link href="/customer/orders" className="w-full sm:w-auto">
+            <Button variant="outline" className="w-full h-11 px-5 text-xs font-bold rounded-xl border-slate-200 hover:bg-slate-100">
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>Ke Daftar Pesanan</span>
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -170,7 +184,7 @@ export function CheckoutPaymentForm({
           </div>
         </div>
 
-        <div className="pt-2">
+        <div className="pt-2 space-y-2">
           <Button
             onClick={handlePay}
             disabled={loading}
@@ -186,6 +200,17 @@ export function CheckoutPaymentForm({
               `Bayar ${formatRupiah(totalAmount)} Sekarang`
             )}
           </Button>
+
+          <Link href={`/customer/orders/${orderId}`} className="block">
+            <Button
+              type="button"
+              variant="ghost"
+              className="w-full text-slate-500 hover:text-slate-800 text-xs font-semibold h-9 rounded-xl"
+            >
+              <ArrowLeft className="w-4 h-4 mr-1.5" />
+              <span>Batal & Kembali ke Rincian Pesanan</span>
+            </Button>
+          </Link>
         </div>
 
         <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400 text-center">
