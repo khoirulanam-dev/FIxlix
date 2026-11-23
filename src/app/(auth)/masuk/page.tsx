@@ -12,7 +12,7 @@ import { Loader2 } from "lucide-react";
 function LoginFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectUrl = searchParams.get("redirect") || "/";
+  const redirectParam = searchParams.get("redirect");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +34,19 @@ function LoginFormContent() {
         throw new Error(res.error.message || "Email atau kata sandi tidak valid.");
       }
 
-      router.push(redirectUrl);
+      // Automatically redirect to role-specific dashboard instead of homepage
+      const userRole = (res.data?.user as any)?.role;
+      const dashboardUrl =
+        userRole === "ADMIN"
+          ? "/admin"
+          : userRole === "TECHNICIAN"
+          ? "/technician"
+          : "/customer";
+
+      // If a specific non-root path was explicitly requested, redirect there; otherwise always default to dashboard
+      const targetUrl = redirectParam && redirectParam !== "/" ? redirectParam : dashboardUrl;
+
+      router.push(targetUrl);
       router.refresh();
     } catch (err: any) {
       setError(err.message || "Gagal masuk ke akun.");

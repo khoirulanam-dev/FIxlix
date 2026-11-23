@@ -1,12 +1,26 @@
 import React from "react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
+import { getSession } from "@/lib/auth/session";
+import { redirect } from "next/navigation";
 
-export default function AuthLayout({
+export default async function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
+  if (session?.user) {
+    const role = (session.user as any).role;
+    if (role === "ADMIN") {
+      redirect("/admin");
+    } else if (role === "TECHNICIAN") {
+      redirect("/technician");
+    } else {
+      redirect("/customer");
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50/60">
       <Navbar />
