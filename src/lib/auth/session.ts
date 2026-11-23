@@ -25,7 +25,7 @@ export async function requireRole(allowedRoles: ("CUSTOMER" | "TECHNICIAN" | "AD
   const session = await requireUser();
   const userRole = (session.user as any).role || "CUSTOMER";
   if (!allowedRoles.includes(userRole)) {
-    redirect("/");
+    redirect("/403");
   }
   return session;
 }
