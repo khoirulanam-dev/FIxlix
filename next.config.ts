@@ -9,7 +9,7 @@ const securityHeaders = [
     ? [
         {
           key: "Strict-Transport-Security",
-          value: "max-age=31536000; includeSubDomains",
+          value: "max-age=31536000; includeSubDomains; preload",
         },
       ]
     : []),
@@ -29,6 +29,10 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=()",
   },
+  {
+    key: "X-XSS-Protection",
+    value: "1; mode=block",
+  },
 ];
 
 const nextConfig: NextConfig = {
@@ -39,7 +43,15 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "f-ixlix.vercel.app",
       },
     ],
   },

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { ScrollObserver } from "@/components/shared/scroll-observer";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className={`${plusJakarta.variable} flex min-h-full flex-col bg-[#F8FAFC] text-slate-900 font-sans`}>
         <ScrollObserver />
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -4,6 +4,14 @@ import { db } from "../db";
 import * as schema from "../db/schema";
 
 export const auth = betterAuth({
+  baseURL:
+    process.env.BETTER_AUTH_URL ||
+    process.env.NEXT_PUBLIC_APP_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://f-ixlix.vercel.app"),
   database: drizzleAdapter(db, {
     provider: "pg",
     schema: {
@@ -21,35 +29,41 @@ export const auth = betterAuth({
       ? process.env.BETTER_AUTH_TRUSTED_ORIGINS.split(",").map((s) => s.trim())
       : [];
 
-    const originHeader = request?.headers?.get("origin");
-    const refererHeader = request?.headers?.get("referer");
-    let detectedOrigin: string | null = null;
+    const allowed = new Set<string>([
+      "https://f-ixlix.vercel.app",
+      ...envOrigins,
+    ]);
 
-    if (originHeader) {
+    if (process.env.BETTER_AUTH_URL) {
       try {
-        detectedOrigin = new URL(originHeader).origin;
-      } catch {}
-    } else if (refererHeader) {
-      try {
-        detectedOrigin = new URL(refererHeader).origin;
+        allowed.add(new URL(process.env.BETTER_AUTH_URL).origin);
       } catch {}
     }
 
-    return [
-      "http://localhost:3000",
-      "http://127.0.0.1:3000",
-      "http://localhost:*",
-      "http://127.0.0.1:*",
-      "http://10.20.110.242:3000",
-      "http://10.*",
-      "https://10.*",
-      "http://192.168.*",
-      "https://192.168.*",
-      "http://172.*",
-      "https://172.*",
-      ...(detectedOrigin ? [detectedOrigin] : []),
-      ...envOrigins,
-    ];
+    if (process.env.NEXT_PUBLIC_APP_URL) {
+      try {
+        allowed.add(new URL(process.env.NEXT_PUBLIC_APP_URL).origin);
+      } catch {}
+    }
+
+    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+      allowed.add(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+    }
+
+    if (process.env.VERCEL_URL) {
+      allowed.add(`https://${process.env.VERCEL_URL}`);
+    }
+
+    // Allow *.vercel.app for preview deployments
+    allowed.add("https://*.vercel.app");
+
+    // Only allow localhost during local development
+    if (process.env.NODE_ENV !== "production") {
+      allowed.add("http://localhost:3000");
+      allowed.add("http://127.0.0.1:3000");
+    }
+
+    return Array.from(allowed);
   },
   user: {
     additionalFields: {
