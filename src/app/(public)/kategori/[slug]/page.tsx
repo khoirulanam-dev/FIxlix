@@ -227,7 +227,7 @@ export default async function CategoryDetailPage({
                 </p>
 
                 {tech.serviceAreaText && (
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-xs text-slate-500">
                     📍 Area: {tech.serviceAreaText}
                   </p>
                 )}

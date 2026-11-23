@@ -338,7 +338,7 @@ export default async function HomePage() {
                           {tech.displayName}
                         </h3>
                       </Link>
-                      <Badge variant="verified" className="text-[10px] px-1.5 py-0">
+                      <Badge variant="verified" className="text-xs px-2 py-0.5">
                         Terverifikasi
                       </Badge>
                     </div>
@@ -368,7 +368,7 @@ export default async function HomePage() {
                   {tech.user.technicianServices.map((srv) => (
                     <span
                       key={srv.id}
-                      className="inline-block text-[11px] px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium"
+                      className="inline-block text-xs px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium"
                     >
                       {srv.category.name}
                     </span>

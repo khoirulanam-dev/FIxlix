@@ -41,7 +41,7 @@ export function Navbar() {
                 <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
                   Fixlix
                 </span>
-                <span className="text-[10px] text-emerald-600 font-semibold uppercase tracking-wider mt-0.5">
+                <span className="text-xs text-emerald-600 font-bold uppercase tracking-wider mt-0.5">
                   Marketplace Servis
                 </span>
               </div>

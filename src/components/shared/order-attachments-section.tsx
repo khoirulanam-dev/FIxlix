@@ -197,11 +197,11 @@ export function OrderAttachmentsSection({
                   </div>
                   <div className="p-3 bg-white space-y-1.5 border-t border-slate-100">
                     <span
-                      className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full border ${meta.color}`}
+                      className={`inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full border ${meta.color}`}
                     >
                       {meta.label}
                     </span>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-xs text-slate-500">
                       Diunggah: {formatDate(item.createdAt)}
                     </p>
                   </div>
@@ -215,7 +215,7 @@ export function OrderAttachmentsSection({
             <p className="text-xs font-semibold text-slate-600">
               Belum ada foto dokumentasi untuk pesanan ini
             </p>
-            <p className="text-[11px] text-slate-400 max-w-sm mx-auto">
+            <p className="text-xs text-slate-500 max-w-sm mx-auto">
               Unggah foto kondisi awal perangkat atau hasil pengerjaan untuk transparansi perbaikan
             </p>
           </div>

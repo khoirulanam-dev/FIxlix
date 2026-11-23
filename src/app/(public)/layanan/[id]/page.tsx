@@ -177,7 +177,7 @@ export default async function ServiceDetailPage({
                 />
               </div>
 
-              <div className="text-center text-[11px] text-slate-500 leading-normal">
+              <div className="text-center text-xs text-slate-500 leading-normal">
                 Disarankan konsultasi via WhatsApp terlebih dahulu agar teknisi dapat memastikan ketersediaan sparepart dan tingkat kerusakan.
               </div>
             </CardContent>

@@ -87,7 +87,7 @@ export default async function TechnicianCatalogPage() {
                       <Wrench className="w-8 h-8" />
                     </div>
                   )}
-                  <span className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-200/80 shadow-xs">
+                  <span className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-slate-800 text-xs font-bold px-2.5 py-1 rounded-lg border border-slate-200/80 shadow-xs">
                     {srv.category.name}
                   </span>
                 </div>
@@ -104,7 +104,7 @@ export default async function TechnicianCatalogPage() {
 
               <div className="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">Biaya Jasa Dasar</div>
+                  <div className="text-xs text-slate-500 uppercase font-semibold">Biaya Jasa Dasar</div>
                   <div className="text-base font-extrabold text-emerald-600 font-mono">
                     {formatRupiah(srv.laborBasePrice)}
                   </div>

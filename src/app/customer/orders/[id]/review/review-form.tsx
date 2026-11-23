@@ -102,7 +102,7 @@ export function ReviewForm({ orderId }: ReviewFormProps) {
           required
           className="rounded-xl border-slate-200 focus:border-emerald-500 text-xs sm:text-sm"
         />
-        <p className="text-[11px] text-slate-400">
+        <p className="text-xs text-slate-500">
           Ulasan Anda akan tampil secara publik di profil teknisi untuk membantu pelanggan lainnya.
         </p>
       </div>

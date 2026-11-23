@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Fixlix — Marketplace Servis Elektronik Rumah Tangga",
@@ -32,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className="h-full antialiased">
-      <body className="flex min-h-full flex-col bg-[#F8FAFC] text-slate-900 font-sans">
+      <body className={`${plusJakarta.variable} flex min-h-full flex-col bg-[#F8FAFC] text-slate-900 font-sans`}>
         {children}
       </body>
     </html>

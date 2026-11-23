@@ -61,7 +61,7 @@ export default async function AdminCommissionPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-50/75 text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
+                <tr className="border-b border-slate-200 bg-slate-50/75 text-slate-500 uppercase tracking-wider text-xs font-bold">
                   <th className="py-3 px-4">Tanggal Efektif</th>
                   <th className="py-3 px-4 font-mono">Persentase</th>
                   <th className="py-3 px-4">Alasan Pembaruan</th>

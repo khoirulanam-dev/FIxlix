@@ -138,11 +138,11 @@ export function DashboardLayoutShell({
                 <span className="font-extrabold text-xl tracking-tight text-slate-900">
                   Fixlix
                 </span>
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-sm bg-slate-900 text-white uppercase tracking-wider">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-slate-900 text-white uppercase tracking-wider">
                   Pro
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 font-medium tracking-tight block">
+              <span className="text-xs text-slate-400 font-medium tracking-tight block">
                 Electronic Repair Portal
               </span>
             </div>
@@ -161,7 +161,7 @@ export function DashboardLayoutShell({
           <div className="min-w-0 flex-1">
             <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
             <div className="flex items-center gap-1.5 mt-0.5">
-              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${roleBadgeColor}`}>
+              <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${roleBadgeColor}`}>
                 {roleLabel}
               </span>
             </div>
@@ -173,7 +173,7 @@ export function DashboardLayoutShell({
           {navSections.map((section, idx) => (
             <div key={idx} className="space-y-1">
               {section.title && (
-                <div className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                <div className="px-3 text-xs font-bold uppercase tracking-wider text-slate-400">
                   {section.title}
                 </div>
               )}
@@ -197,7 +197,7 @@ export function DashboardLayoutShell({
                       </div>
                       {item.badge !== undefined && (
                         <span
-                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                          className={`text-xs font-bold px-2 py-0.5 rounded-full ${
                             active
                               ? "bg-white/20 text-white"
                               : "bg-emerald-100 text-emerald-800"
@@ -268,7 +268,7 @@ export function DashboardLayoutShell({
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
-                <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full inline-block mt-0.5 ${roleBadgeColor}`}>
+                <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full inline-block mt-0.5 ${roleBadgeColor}`}>
                   {roleLabel}
                 </span>
               </div>
@@ -278,7 +278,7 @@ export function DashboardLayoutShell({
               {navSections.map((section, idx) => (
                 <div key={idx} className="space-y-1">
                   {section.title && (
-                    <div className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    <div className="px-3 text-xs font-bold uppercase tracking-wider text-slate-400">
                       {section.title}
                     </div>
                   )}
@@ -349,7 +349,7 @@ export function DashboardLayoutShell({
               <div className="text-xs font-bold text-slate-900 tracking-tight">
                 Fixlix Workspace
               </div>
-              <div className="text-[11px] text-slate-400">
+              <div className="text-xs text-slate-400">
                 Sistem Servis Elektronik Rumah Tangga Terintegrasi
               </div>
             </div>
@@ -375,7 +375,7 @@ export function DashboardLayoutShell({
                   <div className="text-xs font-bold text-slate-800 leading-tight">
                     {user.name}
                   </div>
-                  <div className="text-[10px] text-slate-400 capitalize">
+                  <div className="text-xs text-slate-500 capitalize font-medium">
                     {user.role?.toLowerCase() || roleLabel.toLowerCase()}
                   </div>
                 </div>
@@ -400,9 +400,9 @@ export function DashboardLayoutShell({
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-bold text-slate-900 truncate">{user.name}</div>
-                      <div className="text-[11px] text-slate-400 truncate">{user.email}</div>
+                      <div className="text-xs text-slate-400 truncate">{user.email}</div>
                       <div className="mt-1">
-                        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full inline-block ${roleBadgeColor}`}>
+                        <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full inline-block ${roleBadgeColor}`}>
                           {roleLabel}
                         </span>
                       </div>

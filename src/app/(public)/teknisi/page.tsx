@@ -154,7 +154,7 @@ export default async function TechniciansPage({
                     {tech.user.technicianServices.map((s) => (
                       <span
                         key={s.id}
-                        className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800"
+                        className="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-800"
                       >
                         {s.category.name}
                       </span>

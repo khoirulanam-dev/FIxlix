@@ -77,7 +77,7 @@ export default async function OrderReviewPage({
             )}
           </div>
           <div>
-            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Teknisi Servis</div>
+            <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Teknisi Servis</div>
             <div className="font-bold text-slate-900 text-sm">
               {techProfile?.displayName || order.technician.name}
             </div>

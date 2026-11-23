@@ -493,7 +493,7 @@ export function CustomOrderBuilder({
                 <span className="font-mono text-emerald-400 text-base">{formatRupiah(pricing.customerTotal)}</span>
               </div>
             </div>
-            <p className="text-[10px] text-slate-400 italic">
+            <p className="text-xs text-slate-400 italic">
               *Pelanggan hanya melihat total ini dan rincian item, tidak pernah melihat komisi platform.
             </p>
           </div>

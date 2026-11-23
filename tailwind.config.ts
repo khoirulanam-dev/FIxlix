@@ -56,6 +56,17 @@ const config: Config = {
         md: "0.5rem",
         sm: "0.25rem",
       },
+      fontFamily: {
+        sans: [
+          "var(--font-sans)",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "'Segoe UI'",
+          "Roboto",
+          "sans-serif",
+        ],
+      },
     },
   },
   plugins: [tailwindcssAnimate],

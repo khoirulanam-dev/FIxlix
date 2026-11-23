@@ -36,7 +36,7 @@ export function PriceDisplay({
         </span>
       </div>
       {isBasePrice && (
-        <span className="text-[11px] text-slate-500 leading-tight">
+        <span className="text-xs text-slate-500 leading-tight">
           *Hanya biaya jasa, belum termasuk sparepart
         </span>
       )}

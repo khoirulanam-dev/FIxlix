@@ -124,22 +124,22 @@ export default async function TechnicianDashboardPage() {
           <div className="p-4 rounded-2xl bg-slate-800/90 border border-slate-700/60">
             <div className="text-slate-400 mb-1">Total Jasa Servis:</div>
             <div className="text-base font-extrabold text-emerald-400 font-mono">{formatRupiah(totalLaborFee)}</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">Basis pemotongan komisi</div>
+            <div className="text-xs text-slate-400 mt-1">Basis pemotongan komisi</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-800/90 border border-slate-700/60">
             <div className="text-slate-400 mb-1">Total Komisi Platform:</div>
             <div className="text-base font-extrabold text-amber-400 font-mono">- {formatRupiah(totalCommission)}</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">25% dari biaya jasa</div>
+            <div className="text-xs text-slate-400 mt-1">25% dari biaya jasa</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-800/90 border border-slate-700/60">
             <div className="text-slate-400 mb-1">Total Sparepart:</div>
             <div className="text-base font-extrabold text-white font-mono">{formatRupiah(paidOrders.reduce((s, o) => s + o.partsTotal, 0))}</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">0% komisi platform</div>
+            <div className="text-xs text-slate-400 mt-1">0% komisi platform</div>
           </div>
           <div className="p-4 rounded-2xl bg-slate-800/90 border border-slate-700/60">
             <div className="text-slate-400 mb-1">Estimasi Net Teknisi:</div>
             <div className="text-base font-extrabold text-emerald-300 font-mono">{formatRupiah(totalTechnicianNet)}</div>
-            <div className="text-[10px] text-slate-500 mt-0.5">Sudah dibayar / selesai</div>
+            <div className="text-xs text-slate-400 mt-1">Sudah dibayar / selesai</div>
           </div>
         </div>
       </div>
@@ -187,15 +187,15 @@ export default async function TechnicianDashboardPage() {
                   <tr key={order.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-4 px-6 font-mono font-bold text-slate-900">
                       {order.orderNumber}
-                      <div className="text-[10px] text-slate-400 font-normal">{formatDate(order.createdAt)}</div>
+                      <div className="text-xs text-slate-500 font-normal">{formatDate(order.createdAt)}</div>
                     </td>
                     <td className="py-4 px-6">
                       <div className="font-bold text-slate-900">{order.customer.name}</div>
-                      <div className="text-[11px] text-slate-500">{order.customer.phone || order.customer.email}</div>
+                      <div className="text-xs text-slate-500">{order.customer.phone || order.customer.email}</div>
                     </td>
                     <td className="py-4 px-6">
                       <div className="font-semibold text-slate-800">{order.deviceName}</div>
-                      <div className="text-[11px] text-slate-400">{order.category.name}</div>
+                      <div className="text-xs text-slate-500">{order.category.name}</div>
                     </td>
                     <td className="py-4 px-6">
                       <Badge variant={getOrderStatusVariant(order.status)}>

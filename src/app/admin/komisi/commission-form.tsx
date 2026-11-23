@@ -91,7 +91,7 @@ export function CommissionForm({ currentRate }: { currentRate: number }) {
               %
             </span>
           </div>
-          <p className="text-[11px] text-slate-500">
+          <p className="text-xs text-slate-500">
             Nilai desimal di database: {(ratePercent / 100).toFixed(4)}
           </p>
         </div>

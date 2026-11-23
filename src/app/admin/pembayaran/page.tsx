@@ -50,7 +50,7 @@ export default async function AdminPaymentsPage() {
         </div>
 
         <div className="rounded-xl bg-white border border-slate-200/90 px-4 py-2.5 shadow-sm text-right">
-          <div className="text-[10px] text-slate-400 uppercase font-semibold">Total Terekonsiliasi</div>
+          <div className="text-xs text-slate-500 uppercase font-semibold">Total Terekonsiliasi</div>
           <div className="text-lg font-extrabold text-emerald-700 font-mono">
             {formatRupiah(totalReconciled)}
           </div>
@@ -69,7 +69,7 @@ export default async function AdminPaymentsPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-xs text-left">
             <thead>
-              <tr className="border-b border-slate-200 bg-slate-50/75 text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
+              <tr className="border-b border-slate-200 bg-slate-50/75 text-slate-500 uppercase tracking-wider text-xs font-bold">
                 <th className="py-3 px-4">No. Referensi Pembayaran</th>
                 <th className="py-3 px-4">No. Pesanan</th>
                 <th className="py-3 px-4">Waktu Bayar</th>
@@ -87,7 +87,7 @@ export default async function AdminPaymentsPage() {
                   <td className="py-3.5 px-4 font-mono text-slate-600">{p.order.orderNumber}</td>
                   <td className="py-3.5 px-4 text-slate-500 whitespace-nowrap">{formatDate(p.paidAt || p.createdAt)}</td>
                   <td className="py-3.5 px-4 text-slate-700">
-                    <span className="px-2 py-0.5 rounded-md bg-slate-100 font-semibold text-[11px]">
+                    <span className="px-2.5 py-0.5 rounded-md bg-slate-100 font-semibold text-xs">
                       {p.paymentMethod.replace("SIMULATED_", "")}
                     </span>
                   </td>

@@ -88,29 +88,29 @@ export default async function AdminDashboardPage() {
       {/* Operational Volumes KPI Card */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="rounded-2xl bg-white border border-slate-200/90 p-4 shadow-xs">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total Pesanan</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500">Total Pesanan</div>
           <div className="text-xl font-black text-slate-900 mt-1 font-mono">{metrics.totalOrdersCount}</div>
-          <div className="text-[10px] text-emerald-600 mt-0.5 font-semibold">{metrics.completedOrdersCount} selesai dikerjakan</div>
+          <div className="text-xs text-emerald-600 mt-1 font-semibold">{metrics.completedOrdersCount} selesai dikerjakan</div>
         </div>
 
         <div className="rounded-2xl bg-white border border-slate-200/90 p-4 shadow-xs">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Pesanan Aktif</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500">Pesanan Aktif</div>
           <div className="text-xl font-black text-emerald-600 mt-1 font-mono">{metrics.activeOrdersCount}</div>
-          <div className="text-[10px] text-slate-400 mt-0.5">Sedang diproses / dikerjakan</div>
+          <div className="text-xs text-slate-500 mt-1">Sedang diproses / dikerjakan</div>
         </div>
 
         <div className="rounded-2xl bg-white border border-slate-200/90 p-4 shadow-xs">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Teknisi Terverifikasi</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500">Teknisi Terverifikasi</div>
           <div className="text-xl font-black text-emerald-600 mt-1 font-mono">
             {metrics.verifiedTechniciansCount} / {metrics.totalTechniciansCount}
           </div>
-          <div className="text-[10px] text-slate-400 mt-0.5">Status verifikasi aktif</div>
+          <div className="text-xs text-slate-500 mt-1">Status verifikasi aktif</div>
         </div>
 
         <div className="rounded-2xl bg-white border border-slate-200/90 p-4 shadow-xs">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Pelanggan Terdaftar</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500">Pelanggan Terdaftar</div>
           <div className="text-xl font-black text-slate-900 mt-1 font-mono">{metrics.totalCustomersCount}</div>
-          <div className="text-[10px] text-slate-400 mt-0.5">Akun pelanggan aktif</div>
+          <div className="text-xs text-slate-500 mt-1">Akun pelanggan aktif</div>
         </div>
       </div>
 

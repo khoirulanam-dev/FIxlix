@@ -96,7 +96,7 @@ export default async function TechnicianOrdersListPage({
             >
               <span>{tab.label}</span>
               <span
-                className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                className={`text-xs px-2 py-0.5 rounded-full font-bold ${
                   isActive
                     ? "bg-white/20 text-white"
                     : "bg-slate-100 text-slate-600"
@@ -165,11 +165,11 @@ export default async function TechnicianOrdersListPage({
 
               <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-3 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100 shrink-0">
                 <div className="text-right">
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">Net Teknisi</div>
+                  <div className="text-xs text-slate-500 uppercase font-semibold">Net Teknisi</div>
                   <div className="text-lg font-extrabold text-emerald-700 font-mono">
                     {formatRupiah(order.technicianNet)}
                   </div>
-                  <div className="text-[10px] text-slate-400">
+                  <div className="text-xs text-slate-500">
                     Total order: {formatRupiah(order.customerTotal)}
                   </div>
                 </div>

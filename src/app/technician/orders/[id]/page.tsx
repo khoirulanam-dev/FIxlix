@@ -46,7 +46,7 @@ export default async function TechnicianOrderDetailPage({
       <div className="rounded-2xl border border-slate-200/90 bg-white shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
           <div>
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+            <div className="text-xs font-bold uppercase tracking-wider text-slate-500">
               Nomor Pesanan Servis
             </div>
             <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight font-mono mt-0.5">

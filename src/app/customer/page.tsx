@@ -205,15 +205,15 @@ export default async function CustomerDashboardPage() {
                   <tr key={order.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-4 px-6 font-mono font-bold text-slate-900">
                       {order.orderNumber}
-                      <div className="text-[10px] text-slate-400 font-normal">{formatDate(order.createdAt)}</div>
+                      <div className="text-xs text-slate-500 font-normal">{formatDate(order.createdAt)}</div>
                     </td>
                     <td className="py-4 px-6">
                       <div className="font-bold text-slate-900 text-sm">{order.deviceName}</div>
-                      <div className="text-[11px] text-slate-500 line-clamp-1">{order.description}</div>
+                      <div className="text-xs text-slate-500 line-clamp-1">{order.description}</div>
                     </td>
                     <td className="py-4 px-6 text-slate-700">
                       <div className="font-semibold text-slate-800">{order.technician.technicianProfile?.displayName || order.technician.name}</div>
-                      <div className="text-[11px] text-slate-400">{order.category.name}</div>
+                      <div className="text-xs text-slate-500">{order.category.name}</div>
                     </td>
                     <td className="py-4 px-6">
                       <Badge variant={getOrderStatusVariant(order.status)}>
