@@ -37,7 +37,7 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column: Headline & Search */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 animate-fade-in-up">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Solusi Servis Elektronik Rumah Tangga Terpercaya</span>
@@ -87,7 +87,7 @@ export default async function HomePage() {
             </div>
 
             {/* Right Column: Visual illustration card */}
-            <div className="lg:col-span-5 hidden lg:block">
+            <div className="lg:col-span-5 hidden lg:block animate-scale-in delay-150">
               <div className="relative rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 p-1 shadow-2xl">
                 <div className="rounded-[14px] bg-slate-900 overflow-hidden text-white p-6 space-y-6">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-4">
@@ -151,11 +151,12 @@ export default async function HomePage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {categories.map((cat) => (
+          {categories.map((cat, idx) => (
             <Link
               key={cat.id}
               href={`/kategori/${cat.slug}`}
-              className="group block rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm hover:border-emerald-300 hover-lift"
+              style={{ animationDelay: `${idx * 60}ms` }}
+              className="group block rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm hover:border-emerald-300 hover-lift animate-fade-in-up"
             >
               <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-100 mb-3">
                 {cat.imageKey && (
@@ -197,10 +198,14 @@ export default async function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => {
+          {services.map((service, idx) => {
             const techProfile = service.technician.technicianProfile;
             return (
-              <Card key={service.id} className="overflow-hidden hover-lift flex flex-col justify-between">
+              <Card
+                key={service.id}
+                style={{ animationDelay: `${idx * 60}ms` }}
+                className="overflow-hidden hover-lift flex flex-col justify-between animate-fade-in-up"
+              >
                 <div>
                   <div className="relative aspect-video w-full bg-slate-100">
                     {service.imageKey && (
