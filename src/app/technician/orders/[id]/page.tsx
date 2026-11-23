@@ -29,11 +29,11 @@ export default async function TechnicianOrderDetailPage({
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-xs text-slate-400">
-        <Link href="/technician" className="hover:text-blue-600 transition-colors">
+        <Link href="/technician" className="hover:text-emerald-600 transition-colors">
           Dashboard
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/technician/orders" className="hover:text-blue-600 transition-colors">
+        <Link href="/technician/orders" className="hover:text-emerald-600 transition-colors">
           Pesanan Servis
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
@@ -93,10 +93,10 @@ export default async function TechnicianOrderDetailPage({
 
           {order.technicianNotes && (
             <div>
-              <span className="text-xs font-semibold text-blue-800 block mb-1">
+              <span className="text-xs font-semibold text-emerald-800 block mb-1">
                 Catatan Anda untuk Pelanggan:
               </span>
-              <p className="text-xs sm:text-sm text-slate-700 bg-blue-50/50 rounded-xl p-3.5 border border-blue-100 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 bg-emerald-50/50 rounded-xl p-3.5 border border-emerald-100 leading-relaxed">
                 {order.technicianNotes}
               </p>
             </div>

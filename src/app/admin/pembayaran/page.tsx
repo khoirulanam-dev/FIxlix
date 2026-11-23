@@ -35,7 +35,7 @@ export default async function AdminPaymentsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/admin" className="hover:text-blue-600 transition-colors">
+            <Link href="/admin" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -51,7 +51,7 @@ export default async function AdminPaymentsPage() {
 
         <div className="rounded-xl bg-white border border-slate-200/90 px-4 py-2.5 shadow-sm text-right">
           <div className="text-[10px] text-slate-400 uppercase font-semibold">Total Terekonsiliasi</div>
-          <div className="text-lg font-extrabold text-blue-600 font-mono">
+          <div className="text-lg font-extrabold text-emerald-700 font-mono">
             {formatRupiah(totalReconciled)}
           </div>
         </div>
@@ -98,7 +98,7 @@ export default async function AdminPaymentsPage() {
                       {p.status}
                     </Badge>
                   </td>
-                  <td className="py-3.5 px-4 text-right font-mono font-extrabold text-blue-600">
+                  <td className="py-3.5 px-4 text-right font-mono font-extrabold text-emerald-700">
                     {formatRupiah(p.amount)}
                   </td>
                 </tr>

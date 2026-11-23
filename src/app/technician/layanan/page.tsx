@@ -28,7 +28,7 @@ export default async function TechnicianCatalogPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/technician" className="hover:text-blue-600 transition-colors">
+            <Link href="/technician" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -43,7 +43,7 @@ export default async function TechnicianCatalogPage() {
         </div>
 
         <Link href="/technician/layanan/tambah">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-10 px-4 rounded-xl shadow-sm gap-2">
+          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs h-10 px-4 rounded-xl shadow-sm gap-2">
             <PlusCircle className="w-4 h-4" />
             <span>Tambah Layanan Baru</span>
           </Button>
@@ -62,7 +62,7 @@ export default async function TechnicianCatalogPage() {
             </p>
           </div>
           <Link href="/technician/layanan/tambah">
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-xl">
+            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs rounded-xl">
               Tambah Layanan Pertama
             </Button>
           </Link>
@@ -105,7 +105,7 @@ export default async function TechnicianCatalogPage() {
               <div className="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Biaya Jasa Dasar</div>
-                  <div className="text-base font-extrabold text-blue-600 font-mono">
+                  <div className="text-base font-extrabold text-emerald-600 font-mono">
                     {formatRupiah(srv.laborBasePrice)}
                   </div>
                 </div>

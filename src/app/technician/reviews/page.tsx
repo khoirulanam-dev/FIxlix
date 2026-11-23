@@ -23,7 +23,7 @@ export default async function TechnicianReviewsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/technician" className="hover:text-blue-600 transition-colors">
+            <Link href="/technician" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -61,7 +61,7 @@ export default async function TechnicianReviewsPage() {
             >
               <div className="flex items-center justify-between flex-wrap gap-2 border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-sm">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
                     {rev.customer.name[0]}
                   </div>
                   <div>

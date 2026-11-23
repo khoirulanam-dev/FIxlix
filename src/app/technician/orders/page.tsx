@@ -58,7 +58,7 @@ export default async function TechnicianOrdersListPage({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/technician" className="hover:text-blue-600 transition-colors">
+            <Link href="/technician" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -73,7 +73,7 @@ export default async function TechnicianOrdersListPage({
         </div>
 
         <Link href="/technician/orders/baru">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-10 px-4 rounded-xl shadow-sm gap-2">
+          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs h-10 px-4 rounded-xl shadow-sm gap-2">
             <PlusCircle className="w-4 h-4" />
             <span>Buat Order Kustom</span>
           </Button>
@@ -90,7 +90,7 @@ export default async function TechnicianOrdersListPage({
               href={tab.value ? `/technician/orders?status=${tab.value}` : "/technician/orders"}
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive
-                  ? "bg-blue-600 text-white shadow-sm"
+                  ? "bg-emerald-600 text-white shadow-sm"
                   : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80"
               }`}
             >
@@ -122,7 +122,7 @@ export default async function TechnicianOrdersListPage({
             </p>
           </div>
           <Link href="/technician/orders/baru">
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-xl">
+            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs rounded-xl">
               Buat Order Kustom Baru
             </Button>
           </Link>

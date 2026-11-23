@@ -53,7 +53,7 @@ export default async function CustomerOrdersListPage({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/customer" className="hover:text-blue-600 transition-colors">
+            <Link href="/customer" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -68,7 +68,7 @@ export default async function CustomerOrdersListPage({
         </div>
 
         <Link href="/kategori">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-10 px-4 rounded-xl shadow-sm gap-2">
+          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs h-10 px-4 rounded-xl shadow-sm gap-2">
             <Wrench className="w-4 h-4" />
             <span>Pesan Servis Baru</span>
           </Button>
@@ -85,7 +85,7 @@ export default async function CustomerOrdersListPage({
               href={tab.value ? `/customer/orders?status=${tab.value}` : "/customer/orders"}
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive
-                  ? "bg-blue-600 text-white shadow-sm"
+                  ? "bg-emerald-600 text-white shadow-sm"
                   : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80"
               }`}
             >
@@ -117,7 +117,7 @@ export default async function CustomerOrdersListPage({
             </p>
           </div>
           <Link href="/kategori">
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-xl">
+            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs rounded-xl">
               Cari Jasa Servis
             </Button>
           </Link>
@@ -171,7 +171,7 @@ export default async function CustomerOrdersListPage({
                 <div className="flex items-center gap-2">
                   {order.status === "AWAITING_PAYMENT" && (
                     <Link href={`/customer/orders/${order.id}/bayar`}>
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl gap-1.5 shadow-sm">
+                      <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl gap-1.5 shadow-sm">
                         <CreditCard className="w-3.5 h-3.5" />
                         <span>Bayar</span>
                       </Button>

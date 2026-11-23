@@ -169,7 +169,7 @@ export function DashboardLayoutShell({
                       href={item.href}
                       className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                         active
-                          ? "bg-blue-600 text-white shadow-sm font-bold shadow-blue-600/20"
+                          ? "bg-emerald-600 text-white shadow-sm font-bold shadow-emerald-600/20"
                           : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"
                       }`}
                     >
@@ -182,7 +182,7 @@ export function DashboardLayoutShell({
                           className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                             active
                               ? "bg-white/20 text-white"
-                              : "bg-blue-100 text-blue-800"
+                              : "bg-emerald-100 text-emerald-800"
                           }`}
                         >
                           {item.badge}
@@ -199,7 +199,7 @@ export function DashboardLayoutShell({
         {/* Sidebar Footer Link */}
         <div className="p-4 border-t border-slate-100 space-y-2">
           <Link href="/">
-            <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-blue-700 hover:bg-blue-50 gap-2">
+            <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 gap-2">
               <Home className="w-4 h-4 text-slate-400" />
               <span>Lihat Halaman Publik</span>
               <ExternalLink className="w-3 h-3 ml-auto text-slate-300" />
@@ -275,7 +275,7 @@ export function DashboardLayoutShell({
                           onClick={() => setSidebarOpen(false)}
                           className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                             active
-                              ? "bg-blue-600 text-white font-bold"
+                              ? "bg-emerald-600 text-white font-bold"
                               : "text-slate-600 hover:bg-slate-100"
                           }`}
                         >
@@ -339,12 +339,6 @@ export function DashboardLayoutShell({
 
           {/* Right Header Actions */}
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* Quick Status Pill */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 text-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-slate-600 font-medium">Sistem Berjalan Normal</span>
-            </div>
-
             {/* User Profile Pill Capsule */}
             <div className="flex items-center gap-3 pl-3 sm:pl-4 border-l border-slate-200">
               <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center font-bold text-slate-700 text-xs">

@@ -34,7 +34,7 @@ export default async function AdminOrdersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/admin" className="hover:text-blue-600 transition-colors">
+            <Link href="/admin" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -49,7 +49,7 @@ export default async function AdminOrdersPage() {
         </div>
 
         <span className="text-xs font-semibold text-slate-700 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
-          Total Transaksi: <strong className="text-blue-600">{orders.length}</strong>
+          Total Transaksi: <strong className="text-emerald-600">{orders.length}</strong>
         </span>
       </div>
 
@@ -98,7 +98,7 @@ export default async function AdminOrdersPage() {
                   <td className="py-3.5 px-4 text-right font-mono text-amber-700 bg-amber-50/30">
                     {formatRupiah(o.commissionAmount)}
                   </td>
-                  <td className="py-3.5 px-4 text-right font-mono font-extrabold text-blue-600">
+                  <td className="py-3.5 px-4 text-right font-mono font-extrabold text-emerald-700">
                     {formatRupiah(o.customerTotal)}
                   </td>
                 </tr>

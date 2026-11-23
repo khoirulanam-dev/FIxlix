@@ -31,15 +31,15 @@ export default async function CheckoutPaymentPage({
     <div className="max-w-3xl mx-auto space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-xs text-slate-400">
-        <Link href="/customer" className="hover:text-blue-600 transition-colors">
+        <Link href="/customer" className="hover:text-emerald-600 transition-colors">
           Dashboard
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/customer/orders" className="hover:text-blue-600 transition-colors">
+        <Link href="/customer/orders" className="hover:text-emerald-600 transition-colors">
           Pesanan Servis
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href={`/customer/orders/${order.id}`} className="hover:text-blue-600 transition-colors font-mono">
+        <Link href={`/customer/orders/${order.id}`} className="hover:text-emerald-600 transition-colors font-mono">
           {order.orderNumber}
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
@@ -61,7 +61,7 @@ export default async function CheckoutPaymentPage({
       <div className="rounded-2xl border border-slate-200/90 bg-white shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-blue-600" />
+            <CreditCard className="w-4 h-4 text-emerald-600" />
             <h3 className="font-bold text-slate-900 text-sm">
               Ringkasan Tagihan Servis
             </h3>
@@ -88,7 +88,7 @@ export default async function CheckoutPaymentPage({
           )}
           <div className="flex justify-between items-center pt-3 border-t border-slate-100 text-base font-extrabold text-slate-900">
             <span>Total yang Harus Dibayar:</span>
-            <span className="text-blue-600 text-xl font-mono">{formatRupiah(order.customerTotal)}</span>
+            <span className="text-emerald-600 text-xl font-mono">{formatRupiah(order.customerTotal)}</span>
           </div>
         </div>
       </div>

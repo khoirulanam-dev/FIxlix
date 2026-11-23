@@ -62,7 +62,7 @@ export default async function TechnicianLayout({
         role: "TECHNICIAN",
       }}
       roleLabel="Teknisi"
-      roleBadgeColor="bg-blue-100 text-blue-800 border border-blue-200"
+      roleBadgeColor="bg-emerald-100 text-emerald-800 border border-emerald-200"
       navSections={navSections}
     >
       {children}

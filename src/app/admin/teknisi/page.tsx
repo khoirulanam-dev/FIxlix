@@ -35,7 +35,7 @@ export default async function AdminTechniciansPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Link href="/admin" className="hover:text-blue-600 transition-colors">
+            <Link href="/admin" className="hover:text-emerald-600 transition-colors">
               Dashboard
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -50,7 +50,7 @@ export default async function AdminTechniciansPage() {
         </div>
 
         <span className="text-xs font-semibold text-slate-700 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
-          Total Terdaftar: <strong className="text-blue-600">{technicians.length}</strong>
+          Total Terdaftar: <strong className="text-emerald-600">{technicians.length}</strong>
         </span>
       </div>
 

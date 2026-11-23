@@ -38,11 +38,11 @@ export default async function NewCustomOrderPage() {
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-xs text-slate-400">
-        <Link href="/technician" className="hover:text-blue-600 transition-colors">
+        <Link href="/technician" className="hover:text-emerald-600 transition-colors">
           Dashboard
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/technician/orders" className="hover:text-blue-600 transition-colors">
+        <Link href="/technician/orders" className="hover:text-emerald-600 transition-colors">
           Pesanan Servis
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />

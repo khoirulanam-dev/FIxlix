@@ -31,11 +31,11 @@ export default async function CustomerOrderDetailPage({
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Breadcrumb & Navigation */}
       <div className="flex items-center gap-1.5 text-xs text-slate-400">
-        <Link href="/customer" className="hover:text-blue-600 transition-colors">
+        <Link href="/customer" className="hover:text-emerald-600 transition-colors">
           Dashboard
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/customer/orders" className="hover:text-blue-600 transition-colors">
+        <Link href="/customer/orders" className="hover:text-emerald-600 transition-colors">
           Pesanan Servis
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
@@ -181,7 +181,7 @@ export default async function CustomerOrderDetailPage({
                 <span className="font-extrabold text-slate-900 text-lg">Total Pembayaran</span>
                 <p className="text-xs text-slate-500">Nominal yang harus dibayarkan</p>
               </div>
-              <span className="font-extrabold text-blue-600 text-2xl font-mono">
+              <span className="font-extrabold text-emerald-600 text-2xl font-mono">
                 {formatRupiah(order.customerTotal)}
               </span>
             </div>
@@ -195,17 +195,17 @@ export default async function CustomerOrderDetailPage({
       )}
 
       {order.status === "AWAITING_PAYMENT" && (
-        <div className="rounded-2xl bg-blue-50/70 border border-blue-200/90 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+        <div className="rounded-2xl bg-emerald-50/70 border border-emerald-200/90 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
           <div className="space-y-1">
-            <h3 className="font-bold text-blue-900 text-base">
+            <h3 className="font-bold text-emerald-900 text-base">
               Pesanan Telah Disetujui
             </h3>
-            <p className="text-xs text-blue-700">
+            <p className="text-xs text-emerald-700">
               Lakukan pembayaran digital simulasi sebesar <strong className="font-mono">{formatRupiah(order.customerTotal)}</strong> untuk memulai proses servis.
             </p>
           </div>
           <Link href={`/customer/orders/${order.id}/bayar`} className="shrink-0 w-full sm:w-auto">
-            <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold gap-2 rounded-xl shadow-sm">
+            <Button size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold gap-2 rounded-xl shadow-sm">
               <CreditCard className="w-5 h-5" />
               <span>Bayar Sekarang</span>
             </Button>

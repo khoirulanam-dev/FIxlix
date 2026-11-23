@@ -100,7 +100,7 @@ export function ReviewForm({ orderId }: ReviewFormProps) {
           placeholder="Bagikan kepuasan Anda terhadap kecepatan pengerjaan, ketelitian, dan kerapian teknisi..."
           rows={4}
           required
-          className="rounded-xl border-slate-200 focus:border-blue-500 text-xs sm:text-sm"
+          className="rounded-xl border-slate-200 focus:border-emerald-500 text-xs sm:text-sm"
         />
         <p className="text-[11px] text-slate-400">
           Ulasan Anda akan tampil secara publik di profil teknisi untuk membantu pelanggan lainnya.
@@ -111,7 +111,7 @@ export function ReviewForm({ orderId }: ReviewFormProps) {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs h-11 rounded-xl shadow-sm"
+          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs h-11 rounded-xl shadow-sm"
         >
           {loading ? (
             <>

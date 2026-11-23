@@ -49,7 +49,7 @@ export default async function TechnicianDashboardPage() {
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-slate-600 font-semibold">Teknisi</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-blue-600 font-semibold">Dashboard Operasional</span>
+            <span className="text-emerald-600 font-semibold">Dashboard Operasional</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
             Dashboard Teknisi

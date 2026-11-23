@@ -37,15 +37,15 @@ export default async function OrderReviewPage({
     <div className="max-w-2xl mx-auto space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-xs text-slate-400">
-        <Link href="/customer" className="hover:text-blue-600 transition-colors">
+        <Link href="/customer" className="hover:text-emerald-600 transition-colors">
           Dashboard
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href="/customer/orders" className="hover:text-blue-600 transition-colors">
+        <Link href="/customer/orders" className="hover:text-emerald-600 transition-colors">
           Pesanan Servis
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
-        <Link href={`/customer/orders/${order.id}`} className="hover:text-blue-600 transition-colors font-mono">
+        <Link href={`/customer/orders/${order.id}`} className="hover:text-emerald-600 transition-colors font-mono">
           {order.orderNumber}
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />

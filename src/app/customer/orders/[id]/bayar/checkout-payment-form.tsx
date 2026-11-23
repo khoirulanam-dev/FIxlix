@@ -97,12 +97,12 @@ export function CheckoutPaymentForm({
             onClick={() => setSelectedMethod("SIMULATED_QRIS")}
             className={`cursor-pointer rounded-xl border p-4 flex items-center justify-between transition-all ${
               selectedMethod === "SIMULATED_QRIS"
-                ? "border-blue-600 bg-blue-50/40 shadow-sm"
+                ? "border-emerald-600 bg-emerald-50/40 shadow-sm"
                 : "border-slate-200 hover:border-slate-300 bg-white"
             }`}
           >
             <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                 <QrCode className="w-5 h-5" />
               </div>
               <div>
@@ -112,7 +112,7 @@ export function CheckoutPaymentForm({
             </div>
             <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center">
               {selectedMethod === "SIMULATED_QRIS" && (
-                <div className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
               )}
             </div>
           </div>
@@ -122,7 +122,7 @@ export function CheckoutPaymentForm({
             onClick={() => setSelectedMethod("SIMULATED_BANK_TRANSFER")}
             className={`cursor-pointer rounded-xl border p-4 flex items-center justify-between transition-all ${
               selectedMethod === "SIMULATED_BANK_TRANSFER"
-                ? "border-blue-600 bg-blue-50/40 shadow-sm"
+                ? "border-emerald-600 bg-emerald-50/40 shadow-sm"
                 : "border-slate-200 hover:border-slate-300 bg-white"
             }`}
           >
@@ -137,7 +137,7 @@ export function CheckoutPaymentForm({
             </div>
             <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center">
               {selectedMethod === "SIMULATED_BANK_TRANSFER" && (
-                <div className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
               )}
             </div>
           </div>
@@ -147,7 +147,7 @@ export function CheckoutPaymentForm({
             onClick={() => setSelectedMethod("SIMULATED_EWALLET")}
             className={`cursor-pointer rounded-xl border p-4 flex items-center justify-between transition-all ${
               selectedMethod === "SIMULATED_EWALLET"
-                ? "border-blue-600 bg-blue-50/40 shadow-sm"
+                ? "border-emerald-600 bg-emerald-50/40 shadow-sm"
                 : "border-slate-200 hover:border-slate-300 bg-white"
             }`}
           >
@@ -162,7 +162,7 @@ export function CheckoutPaymentForm({
             </div>
             <div className="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center">
               {selectedMethod === "SIMULATED_EWALLET" && (
-                <div className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
               )}
             </div>
           </div>
@@ -173,7 +173,7 @@ export function CheckoutPaymentForm({
             onClick={handlePay}
             disabled={loading}
             size="lg"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold h-11 rounded-xl shadow-sm text-sm"
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-11 rounded-xl shadow-sm text-sm"
           >
             {loading ? (
               <>

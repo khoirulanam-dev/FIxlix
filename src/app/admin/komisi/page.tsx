@@ -16,7 +16,7 @@ export default async function AdminCommissionPage() {
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Breadcrumb & Header */}
       <div className="flex items-center gap-1.5 text-xs text-slate-400">
-        <Link href="/admin" className="hover:text-blue-600 transition-colors">
+        <Link href="/admin" className="hover:text-emerald-600 transition-colors">
           Dashboard
         </Link>
         <ChevronRight className="w-3.5 h-3.5" />
@@ -71,7 +71,7 @@ export default async function AdminCommissionPage() {
                 {metrics.commissionHistory.map((h) => (
                   <tr key={h.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-3 px-4 text-slate-800">{formatDate(h.effectiveAt)}</td>
-                    <td className="py-3 px-4 font-mono font-bold text-blue-600">
+                    <td className="py-3 px-4 font-mono font-bold text-emerald-700">
                       {(Number(h.rate) * 100).toFixed(0)}% ({h.rate})
                     </td>
                     <td className="py-3 px-4 text-slate-600">{h.reason || "-"}</td>

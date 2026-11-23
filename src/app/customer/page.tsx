@@ -86,22 +86,22 @@ export default async function CustomerDashboardPage() {
       )}
 
       {awaitingPayment.length > 0 && (
-        <div className="rounded-3xl bg-blue-50/90 border border-blue-200 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+        <div className="rounded-3xl bg-emerald-50/90 border border-emerald-200 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 border border-blue-200">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
               <CreditCard className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-blue-950 text-sm">
+              <h3 className="font-bold text-emerald-950 text-sm">
                 Ada {awaitingPayment.length} pesanan siap untuk dibayar
               </h3>
-              <p className="text-xs text-blue-800 mt-0.5">
+              <p className="text-xs text-emerald-800 mt-0.5">
                 Selesaikan pembayaran digital agar teknisi dapat segera memulai perbaikan.
               </p>
             </div>
           </div>
           <Link href={`/customer/orders/${awaitingPayment[0].id}/bayar`}>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white shrink-0 rounded-xl font-bold">
+            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white shrink-0 rounded-xl font-bold">
               Bayar Sekarang
             </Button>
           </Link>

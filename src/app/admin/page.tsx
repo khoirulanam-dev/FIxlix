@@ -95,7 +95,7 @@ export default async function AdminDashboardPage() {
 
         <div className="rounded-2xl bg-white border border-slate-200/90 p-4 shadow-xs">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Pesanan Aktif</div>
-          <div className="text-xl font-black text-blue-600 mt-1 font-mono">{metrics.activeOrdersCount}</div>
+          <div className="text-xl font-black text-emerald-600 mt-1 font-mono">{metrics.activeOrdersCount}</div>
           <div className="text-[10px] text-slate-400 mt-0.5">Sedang diproses / dikerjakan</div>
         </div>
 
