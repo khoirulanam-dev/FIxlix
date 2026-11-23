@@ -144,12 +144,12 @@ export function DashboardLayoutShell({
           </Link>
         </div>
 
-        {/* Navigation Sections */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
+        {/* Navigation Sections & Quick Actions (Grouped at top to eliminate desktop scrolling) */}
+        <div className="flex-1 overflow-y-auto px-4 py-5 space-y-6">
           {navSections.map((section, idx) => (
-            <div key={idx} className="space-y-1">
+            <div key={idx} className="space-y-1.5">
               {section.title && (
-                <div className="px-3 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <div className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                   {section.title}
                 </div>
               )}
@@ -161,7 +161,7 @@ export function DashboardLayoutShell({
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                      className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                         active
                           ? "bg-emerald-600 text-white shadow-sm font-bold shadow-emerald-600/20"
                           : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"
@@ -188,26 +188,26 @@ export function DashboardLayoutShell({
               </div>
             </div>
           ))}
-        </div>
 
-        {/* Sidebar Footer Link */}
-        <div className="p-4 border-t border-slate-100 space-y-2">
-          <Link href="/">
-            <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 gap-2">
-              <Home className="w-4 h-4 text-slate-400" />
-              <span>Lihat Halaman Publik</span>
-              <ExternalLink className="w-3 h-3 ml-auto text-slate-300" />
+          {/* Moved Up to utilize the empty space directly under menu items */}
+          <div className="pt-3 border-t border-slate-150 space-y-1">
+            <Link href="/">
+              <Button variant="ghost" size="sm" className="w-full justify-start text-xs text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 gap-2.5 rounded-xl h-9">
+                <Home className="w-4 h-4 text-slate-400" />
+                <span>Lihat Halaman Publik</span>
+                <ExternalLink className="w-3 h-3 ml-auto text-slate-300" />
+              </Button>
+            </Link>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleSignOut}
+              className="w-full justify-start text-xs text-red-600 hover:text-red-700 hover:bg-red-50 gap-2.5 rounded-xl h-9"
+            >
+              <LogOut className="w-4 h-4 text-red-400" />
+              <span>Keluar Akun (Sign Out)</span>
             </Button>
-          </Link>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleSignOut}
-            className="w-full justify-start text-xs text-red-600 hover:text-red-700 hover:bg-red-50 gap-2"
-          >
-            <LogOut className="w-4 h-4 text-red-400" />
-            <span>Keluar Akun (Sign Out)</span>
-          </Button>
+          </div>
         </div>
       </aside>
 
