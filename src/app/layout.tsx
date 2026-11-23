@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     "Fixlix",
   ],
   authors: [{ name: "Fixlix Indonesia" }],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export const viewport: Viewport = {
