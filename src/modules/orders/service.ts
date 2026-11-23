@@ -36,6 +36,7 @@ export async function createDirectOrder(params: {
   deviceName: string;
   description: string;
   customerNotes?: string;
+  attachmentUrl?: string;
 }) {
   const service = await db.query.technicianServices.findFirst({
     where: eq(schema.technicianServices.id, params.serviceId),
@@ -79,6 +80,18 @@ export async function createDirectOrder(params: {
       customerAcceptedAt: new Date(),
     });
 
+    if (params.attachmentUrl) {
+      await tx.insert(schema.orderAttachments).values({
+        id: `att-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+        orderId,
+        uploadedBy: params.customerId,
+        storageKey: params.attachmentUrl,
+        mimeType: "image/jpeg",
+        sizeBytes: 0,
+        kind: "BEFORE",
+      });
+    }
+
     await tx.insert(schema.orderStatusHistory).values({
       id: `osh-${Date.now()}`,
       orderId,
@@ -118,6 +131,7 @@ export async function createCustomOrder(params: {
   otherCharges?: number;
   otherChargesDescription?: string;
   technicianNotes?: string;
+  attachmentUrl?: string;
 }) {
   const commissionRate = await getActiveCommissionRate();
 
@@ -177,6 +191,18 @@ export async function createCustomOrder(params: {
         orderId,
         description: params.otherChargesDescription || "Biaya operasional tambahan",
         amount: params.otherCharges,
+      });
+    }
+
+    if (params.attachmentUrl) {
+      await tx.insert(schema.orderAttachments).values({
+        id: `att-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+        orderId,
+        uploadedBy: params.technicianId,
+        storageKey: params.attachmentUrl,
+        mimeType: "image/jpeg",
+        sizeBytes: 0,
+        kind: "BEFORE",
       });
     }
 
@@ -446,6 +472,9 @@ export async function getCustomerOrderWithDetails(orderId: string, customerId: s
       service: true,
       spareparts: true,
       additionalCharges: true,
+      attachments: {
+        orderBy: [desc(schema.orderAttachments.createdAt)],
+      },
       statusHistory: {
         orderBy: [desc(schema.orderStatusHistory.createdAt)],
       },
@@ -478,6 +507,9 @@ export async function getTechnicianOrderWithDetails(orderId: string, technicianI
       service: true,
       spareparts: true,
       additionalCharges: true,
+      attachments: {
+        orderBy: [desc(schema.orderAttachments.createdAt)],
+      },
       statusHistory: {
         orderBy: [desc(schema.orderStatusHistory.createdAt)],
       },

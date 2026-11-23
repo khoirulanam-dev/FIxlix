@@ -9,6 +9,7 @@ import { useSession } from "@/lib/auth/auth-client";
 import { useRouter } from "next/navigation";
 import { formatRupiah } from "@/lib/utils";
 import { ShoppingBag, Loader2, X } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 
 interface DirectOrderButtonProps {
   serviceId: string;
@@ -28,6 +29,7 @@ export function DirectOrderButton({
   const [deviceName, setDeviceName] = useState("");
   const [description, setDescription] = useState("");
   const [notes, setNotes] = useState("");
+  const [attachmentUrl, setAttachmentUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,6 +64,7 @@ export function DirectOrderButton({
           deviceName,
           description,
           customerNotes: notes,
+          attachmentUrl: attachmentUrl || undefined,
         }),
       });
 
@@ -155,6 +158,14 @@ export function DirectOrderButton({
                   placeholder="Alamat patokan atau instruksi untuk teknisi"
                 />
               </div>
+
+              <ImageUpload
+                label="Foto Bukti Kerusakan / Unit (Opsional)"
+                description="Lampirkan foto fisik kondisi elektronik Anda (JPG, PNG, WEBP maks 5 MB)."
+                value={attachmentUrl}
+                onChange={setAttachmentUrl}
+                onRemove={() => setAttachmentUrl("")}
+              />
 
               <div className="pt-2 flex gap-3">
                 <Button

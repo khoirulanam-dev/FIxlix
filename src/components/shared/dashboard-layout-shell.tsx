@@ -421,25 +421,45 @@ export function DashboardLayoutShell({
                     </Link>
 
                     {user.role === "CUSTOMER" && (
-                      <Link
-                        href="/customer/orders"
-                        onClick={() => setUserMenuOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                      >
-                        <ShoppingBag className="w-4 h-4 text-slate-400" />
-                        <span>Pesanan Servis Saya</span>
-                      </Link>
+                      <>
+                        <Link
+                          href="/customer/profil"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                        >
+                          <UserIcon className="w-4 h-4 text-slate-400" />
+                          <span>Profil & Foto Saya</span>
+                        </Link>
+                        <Link
+                          href="/customer/orders"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                        >
+                          <ShoppingBag className="w-4 h-4 text-slate-400" />
+                          <span>Pesanan Servis Saya</span>
+                        </Link>
+                      </>
                     )}
 
                     {user.role === "TECHNICIAN" && (
-                      <Link
-                        href="/technician/orders"
-                        onClick={() => setUserMenuOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
-                      >
-                        <ShoppingBag className="w-4 h-4 text-slate-400" />
-                        <span>Kelola Pesanan</span>
-                      </Link>
+                      <>
+                        <Link
+                          href="/technician/profil"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                        >
+                          <UserIcon className="w-4 h-4 text-slate-400" />
+                          <span>Profil & Foto Saya</span>
+                        </Link>
+                        <Link
+                          href="/technician/orders"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+                        >
+                          <ShoppingBag className="w-4 h-4 text-slate-400" />
+                          <span>Kelola Pesanan</span>
+                        </Link>
+                      </>
                     )}
 
                     {user.role === "ADMIN" && (

@@ -10,6 +10,7 @@ import { getOrderStatusLabel, getOrderStatusVariant } from "@/core/domain/order"
 import { ArrowLeft, Clock, ShieldCheck, CheckCircle2, AlertTriangle, Star, ChevronRight, User, Phone, Mail, XCircle } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { TechnicianOrderActions } from "./technician-order-actions";
+import { OrderAttachmentsSection } from "@/components/shared/order-attachments-section";
 
 export const dynamic = "force-dynamic";
 
@@ -200,6 +201,13 @@ export default async function TechnicianOrderDetailPage({
           </div>
         </div>
       </div>
+
+      {/* Dokumentasi & Foto Lampiran */}
+      <OrderAttachmentsSection
+        orderId={order.id}
+        attachments={order.attachments as any}
+        canUpload={order.status !== "CANCELLED"}
+      />
 
       {/* Action Decision Control */}
       <TechnicianOrderActions orderId={order.id} status={order.status} />

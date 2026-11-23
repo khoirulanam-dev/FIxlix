@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { formatRupiah } from "@/lib/utils";
 import { Loader2, ChevronDown } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 
 interface CategoryOption {
   id: string;
@@ -142,15 +143,13 @@ export function AddServiceForm({ categories }: { categories: CategoryOption[] })
         </div>
       </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="img">URL Foto Layanan (Opsional)</Label>
-        <Input
-          id="img"
-          value={imageKey}
-          onChange={(e) => setImageKey(e.target.value)}
-          placeholder="https://example.com/foto-layanan.jpg"
-        />
-      </div>
+      <ImageUpload
+        label="Foto Layanan Servis (Opsional)"
+        description="Unggah foto contoh pengerjaan atau peralatan. Format JPG, PNG, atau WEBP maks 5 MB."
+        value={imageKey}
+        onChange={setImageKey}
+        onRemove={() => setImageKey("")}
+      />
 
       <Button
         type="submit"

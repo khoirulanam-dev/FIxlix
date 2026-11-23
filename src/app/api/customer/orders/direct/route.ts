@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { serviceId, deviceName, description, customerNotes } = body;
+    const { serviceId, deviceName, description, customerNotes, attachmentUrl } = body;
 
     if (!serviceId || !deviceName || !description) {
       return NextResponse.json(
@@ -28,6 +28,7 @@ export async function POST(req: Request) {
       deviceName,
       description,
       customerNotes,
+      attachmentUrl,
     });
 
     return NextResponse.json(result);

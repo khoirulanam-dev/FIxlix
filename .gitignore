@@ -19,6 +19,10 @@ dist/
 build/
 *.tsbuildinfo
 
+# Uploaded assets
+public/uploads/*
+!public/uploads/.gitkeep
+
 # Environment files
 .env
 .env.*

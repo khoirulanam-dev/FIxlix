@@ -11,6 +11,7 @@ import { formatRupiah } from "@/lib/utils";
 import { calculatePricing } from "@/core/domain/commission";
 import { Plus, Trash2, Loader2, Sparkles, AlertCircle, ChevronDown } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { ImageUpload } from "@/components/ui/image-upload";
 
 interface CustomerOption {
   id: string;
@@ -60,6 +61,7 @@ export function CustomOrderBuilder({
   const [deviceName, setDeviceName] = useState("");
   const [description, setDescription] = useState("");
   const [technicianNotes, setTechnicianNotes] = useState("");
+  const [attachmentUrl, setAttachmentUrl] = useState("");
 
   // Monetary inputs
   const [laborFee, setLaborFee] = useState<number>(100000);
@@ -156,6 +158,7 @@ export function CustomOrderBuilder({
           otherCharges,
           otherChargesDescription: otherCharges > 0 ? otherChargesDescription : undefined,
           technicianNotes,
+          attachmentUrl: attachmentUrl || undefined,
         }),
       });
 
@@ -293,6 +296,14 @@ export function CustomOrderBuilder({
             placeholder="Contoh: Estimasi waktu 2 jam, garansi servis 30 hari"
           />
         </div>
+
+        <ImageUpload
+          label="Foto Kondisi Perangkat / Kerusakan (Opsional)"
+          description="Unggah foto fisik kondisi alat dari konsultasi WhatsApp. Format JPG, PNG, WEBP maks 5 MB."
+          value={attachmentUrl}
+          onChange={setAttachmentUrl}
+          onRemove={() => setAttachmentUrl("")}
+        />
       </div>
 
       {/* 2. Itemized Costs (Labor, Parts, Other Charges) */}

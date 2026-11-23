@@ -24,6 +24,7 @@ export async function POST(req: Request) {
       otherCharges,
       otherChargesDescription,
       technicianNotes,
+      attachmentUrl,
     } = body;
 
     if (!customerId || !categoryId || !deviceName || !description || laborFee === undefined) {
@@ -45,6 +46,7 @@ export async function POST(req: Request) {
       otherCharges: Number(otherCharges) || 0,
       otherChargesDescription,
       technicianNotes,
+      attachmentUrl,
     });
 
     return NextResponse.json(result);

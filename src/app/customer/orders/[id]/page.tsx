@@ -10,6 +10,7 @@ import { getOrderStatusLabel, getOrderStatusVariant } from "@/core/domain/order"
 import { ArrowLeft, Clock, ShieldCheck, CheckCircle2, AlertTriangle, CreditCard, Star, ChevronRight, User, Wrench, XCircle } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { OrderApprovalActions } from "./order-approval-actions";
+import { OrderAttachmentsSection } from "@/components/shared/order-attachments-section";
 
 export const dynamic = "force-dynamic";
 
@@ -190,6 +191,13 @@ export default async function CustomerOrderDetailPage({
           </div>
         </div>
       </div>
+
+      {/* Foto & Dokumentasi Kerusakan / Servis */}
+      <OrderAttachmentsSection
+        orderId={order.id}
+        attachments={order.attachments as any}
+        canUpload={order.status !== "CANCELLED"}
+      />
 
       {/* Action Decision: Approval / Reject / Pay / Review */}
       {order.status === "PENDING_CUSTOMER_APPROVAL" && (
